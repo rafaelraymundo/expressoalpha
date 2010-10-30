@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<title>Smart Columns w/ CSS &amp; jQuery</title> 
+<script type="text/javascript" src="js/jscode/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jscode/jquery-ui-1.8.4.custom.min.js"></script>
+<style type="text/css"> 
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+	font-family:  Arial, Verdana, Helvetica, sans-serif;
+	line-height: 1.8em;
+	background: #695e53;
+}
+img {border: none;}
+a {color: #423b35;}
+* {margin: 0; padding: 0;}
+h1,h2{ font-weight: normal; margin: 10px 0; padding: 10px 0;}
+h1 {
+	font-size: 4em;
+	padding: 15px 5%;
+	margin: 0 auto;
+	background: #2b221b;
+	line-height: 1em;
+	color: #e3e1d5;
+	border-bottom: 1px solid #1b140e;
+}
+.container {
+	padding: 10px 5%;
+}
+ul.column{
+	width: 100%;
+	padding: 0;
+	margin: 10px 0 50px;
+	list-style: none;
+}
+ul.column li {
+	float: left;
+	width: 200px;
+	padding: 0;
+	margin: 5px 0;
+	display: inline;
+}
+.block {
+	height: 355px;
+	font-size: 1em;
+	margin-right: 10px;
+	padding: 20px;
+	background: #e3e1d5;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.block h2 {
+	font-size: 1.8em;
+}
+.block img {
+	width: 89%;
+	padding: 5%;
+	margin: 0 auto;
+	background:#fff;
+	-ms-interpolation-mode: bicubic;
+	display: block;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+</style> 
+ 
+<script type="text/javascript"> 
+ 
+$(document).ready(function(){
+	
+	$('a[href^="http://"]')	.attr({ target: "_blank" });
+ 
+	function smartColumns() {
+		
+		$("ul.column").css({ 'width' : "100%"});
+		
+		var colWrap = $("ul.column").width();
+		var colNum = Math.floor(colWrap / 300); 
+		var colFixed = Math.floor(colWrap / colNum);
+		
+		
+		$("ul.column").css({ 'width' : colWrap});
+		$("ul.column li").css({ 'width' : colFixed});
+ 
+		
+		
+	}	
+	
+	smartColumns();	
+ 
+	$(window).resize(function () {
+		smartColumns();
+		
+	}); 
+	
+		
+});
+	
+</script> 
+ 
+</head> 
+ 
+<body> 
+<!--
+<h1>Smart Columns w/ CSS &amp; jQuery</h1> 
+<div class="container"> 
+	<p style="color: #ccc;"><a href="http://www.sohtanaka.com/web-design/smart-columns-w-css-jquery/" style="color: #fff;">Smart Columns w/ CSS &amp; jQuery</a> by Soh Tanaka.<br />Check out his <a href="http://www.sohtanaka.com/web-design-blog/" style="color: #fff;">Web Design Blog</a> for more tutorials!</p> 
+    <ul class="column"> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/technology/too-much-tweet/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/toomuch_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/technology/too-much-tweet/">Too Much Tweet</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/illustrations/berit-somme/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/somme_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/illustrations/berit-somme/">Berit Somme</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/light/jason-reynolds/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/jasonreynolds_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/light/jason-reynolds/">Jason Reynolds</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+          </div> 
+        </li> 		
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/illustrations/vanity-claire/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/vanityclaire_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/illustrations/vanity-claire/">Vanity Claire</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/design-firm/we-are-sofa/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/wearesofa_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/design-firm/we-are-sofa/">We Are Sofa</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/design-firm/outline-2-design/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/outline2design_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/design-firm/outline-2-design/">Outline 2 Design</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/blog/rocket-club/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/rocketclub_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/blog/rocket-club/">Rocket Club</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+                </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/portfolio/emotions/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/emotions_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/portfolio/emotions/">Emotions</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/ecommerce/sansa/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/sansa_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/ecommerce/sansa/">Sansa</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/design-firm/legwork-studio/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/legworkstudio_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/design-firm/legwork-studio/">Legwork Studio</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+                </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/community/moytoy/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/moytoy_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/community/moytoy/">Moytoy</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+              <a href="http://www.designbombs.com/design-firm/method-arts/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/methodarts_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/design-firm/method-arts/">Method Arts</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+                <a href="http://www.designbombs.com/ecommerce/479-popcorn/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/479popcorn_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/ecommerce/479-popcorn/">479 Popcorn</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+                </div> 
+        </li> 
+        <li> 
+            <div class="block"> 
+                <a href="http://www.designbombs.com/design-firm/mode-project/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/modeproject_thumb.gif"alt=""  /></a> 
+                <h2><a href="http://www.designbombs.com/design-firm/mode-project/">Mode Project</a></h2> 
+                <p>Odio velit vulpes zelus elit euismod. Singularis abluo autem saepius tego quod letatio meus. Os, tamen, tincidunt facilisi laoreet consectetuer quis. Feugiat ille, indoles, turpis </p> 
+            </div> 
+        </li> 
+    </ul> 
+</div>  
+-->
+<div class="container">
+<ul class="column"> 
+
+	<li>
+		<div class="block">
+			<h2>Backlog</h2>
+			<p>Aqui vao as tarefas em backlog.</p>
+		</div>
+	</li>
+	<li>
+
+                <div class="block">
+                        <h2>Work In Progres</h2>
+                        <p>As tarefas sendo executadas vao para essa área.</p>
+                </div>
+        </li>
+	<li>
+                <div class="block">
+                        <h2>Done</h2>
+                        <p>Chegamos ao fim da tarefa.</p>
+                </div>
+        </li>
+
+<!-- Segue o fim do codigo-->
+   </ul>
+</div>
+ 
+</body> 
+</html> 
+
