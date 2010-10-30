@@ -1,0 +1,61 @@
+	body {
+		background-color:#FFFFFF;
+		## color:#FFFFFF; Cor da fonte
+		font-family:Verdana,Helvetica,Sans-Serif;
+		font-size:14px;
+		cursor:auto;
+	}
+	span.title-bar {
+		background-color:#DDDDDD;
+		border-bottom:1px solid #CCCCCC;
+		color:#333333;
+		display:block;
+		font-weight:bold;
+		height:25px;
+		padding:0 3px;
+	}
+	span.footer {
+		background:#DDDDDD none repeat scroll 0 0;
+		border-top:1px solid #CCCCCC;
+		display:block;
+		font-size:12px;
+		min-height:20px;
+		padding:3px;
+	}
+	.task {
+		-moz-border-radius-bottomleft:3px;
+		-moz-border-radius-bottomright:3px;
+		-moz-border-radius-topleft:3px;
+		-moz-border-radius-topright:3px;
+		background-color:#F2F2F2;
+		border:0px solid #CCCCCC;
+		display:block;
+		margin:1 10 1 9;
+		width:97%;
+	}	  
+	#bublecontainers {
+        	background-color: gray;
+                width: 90%;
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+        }
+	.buble-content {
+                width: 100%;
+                top: 0;
+                margin: 8 0 0 5;
+                padding: 0px 8px 0px 0px;
+                text-align:justify;
+                overflow: hidden;
+                border-radius:10px;
+                -moz-border-radius:10px;
+                -webkit-border-radius:10px;
+                background-color: #DDDDDD;
+                border-style: outset;
+                text-indent: 10px;
+        }
+	.buble
+        {
+                display:inline-block;
+                width:93%;
+        }
+	
