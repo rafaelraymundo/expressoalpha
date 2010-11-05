@@ -1,8 +1,12 @@
 agileProjects	agileProjects	pt-br	Projetos Ágeis
+Execute sprint	agileProjects	pt-br	Executar sprint
 Execute task	agileProjects	pt-br	Executar tarefa
-Responsable	agileProjects	pt-br	Responsável
-Subtitle	agileProjects	pt-br	Subtítulo
+Goal	agileProjects	pt-br	Meta
+Include sprint	agileProjects	pt-br	Incluir sprint
 Include task	agileProjects	pt-br	Incluir tarefa
+Responsable	agileProjects	pt-br	Responsável
+Retrospective	agileProjects	pt-br	Retrospectiva
+Subtitle	agileProjects	pt-br	Subtítulo
 listAdmin	common	pt-br	Mailman Admin
 listAdmin	listAdmin	pt-br	Mailman Admin
 Global Configuration	common	pt-br	Configurações Globais
