@@ -135,6 +135,26 @@
                 }
         }
 	//----------------Fim Include Project---------------------------------
+        //---------------Include Tasks------------------------------------------
+        function taskInclude(){
+
+                        http = new XMLHttpRequest();
+                        http.onreadystatechange = stateIncludeTask;
+                        http.open("GET","/agileProjects/inc/taskInclude.inc.php");
+                        http.send(null);
+                        respostServer = http.responseXML;
+        }
+        function stateIncludeTask() {
+                if ( http.readyState == 4) { // Complete 
+                        if ( http.status == 200) { // server reply is OK
+                                document.getElementById('tabs-2').innerHTML = ''; 
+                                document.getElementById('tabs-2').innerHTML = http.responseText ;
+                        } else {
+                                alert( "Problema: " + http.statusText );
+                        }
+                }
+        }
+        //----------------Fim Include Tasks-------------------------------------
 	//---------------Include Users----------------------------------------
 	function userInclude(filter, boxField){
 		field = boxField;
