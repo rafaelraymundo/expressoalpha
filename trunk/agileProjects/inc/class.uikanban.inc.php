@@ -37,10 +37,10 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 			//echo "o temp: <b>".$this->template_dir."</b> teve isso";
 			echo "	<div class=\"container\">
 				<ul class=\"column\" style=\"width:1213px;\">";
-			$col .= $this->columns("Sprint Backlog","sprintBacklog",$this->task());
-			$col .= $this->columns("Doing","doing");
-			$col .= $this->columns("Tests","tests");
-			$col .= $this->columns("Done","done");
+			$col .= $this->columns("Planejadas","sprintBacklog",$this->task());
+			$col .= $this->columns("Em execu&ccedil;&atilde;o","doing");
+			$col .= $this->columns("Testes","tests");
+			$col .= $this->columns("Prontas","done");
 			
 			echo $col."</ul></div>";
 		}

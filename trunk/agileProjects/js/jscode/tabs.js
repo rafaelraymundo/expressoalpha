@@ -84,7 +84,7 @@
 					   $("#sprintBacklog,#doing,#tests,#done").sortable({
                     				connectWith: '.connectedSortable',
                     				receive: function(event, ui) { 
-                        			  alert($(ui.item).attr('data-id') + ' -> ' + $(this).attr('id'));
+                        //			  alert($(ui.item).attr('data-id') + ' -> ' + $(this).attr('id'));
                         			  //Do something with the recently dropped item here
                     				}
                 			   }).disableSelection();
@@ -155,6 +155,26 @@
                 }
         }
         //----------------Fim Include Tasks-------------------------------------
+        //---------------Include Tasks------------------------------------------
+        function sprintInclude(){
+
+                        http = new XMLHttpRequest();
+                        http.onreadystatechange = stateIncludeSprint;
+                        http.open("GET","/agileProjects/inc/sprintInclude.inc.php");
+                        http.send(null);
+                        respostServer = http.responseXML;
+        }
+        function stateIncludeSprint() {
+                if ( http.readyState == 4) { // Complete 
+                        if ( http.status == 200) { // server reply is OK
+                                document.getElementById('tabs-3').innerHTML = '';
+                                document.getElementById('tabs-3').innerHTML = http.responseText ;
+                        } else {
+                                alert( "Problema: " + http.statusText );
+                        }
+                }
+        }
+        //----------------Fim Include Tasks-------------------------------------	
 	//---------------Include Users----------------------------------------
 	function userInclude(filter, boxField){
 		field = boxField;
