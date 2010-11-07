@@ -144,7 +144,7 @@ function add_user(out, inp)
 		var particArray = serialize(countValues(partic));
 		var adminArray = serialize(countValues(admin));
                 http = new XMLHttpRequest();
-                var url = "controller.php";
+                var url = "action.php";
                 var params = "type=project&name="+name+"&description="+description+"&particArray="+particArray+"&adminArray="+adminArray;
                 http.open("POST",url,true);
     
@@ -165,7 +165,7 @@ function add_user(out, inp)
 //----------------------Cria Sprint-------------------------------------------------
         function newSprint(name, dt_start,dt_end, goal){
                 http = new XMLHttpRequest();
-                var url = "controller.php";
+                var url = "action.php";
                 var params = "type=newSprint&name="+name+"&dt_start="+dt_start+"&dt_end="+dt_end+"&goal="+goal;
                 http.open("POST",url,true);
     
@@ -188,7 +188,7 @@ function add_user(out, inp)
                 var particArray = serialize(countValues(partic));
                 var adminArray = serialize(countValues(admin));
                 http = new XMLHttpRequest();
-                var url = "controller.php";
+                var url = "action.php";
                 var params = "type=saveProject&projId="+projId+"&name="+name+"&description="+description+"&particArray="+particArray+"&adminArray="+adminArray;
                 http.open("POST",url,true);
     
@@ -215,7 +215,7 @@ function add_user(out, inp)
 			var answer = confirm("Tem certeza que deseja excluir o projeto ["+projName+"] ?");
 			if (answer){
 				http = new XMLHttpRequest();
-		                var url = "controller.php";
+		                var url = "action.php";
 		                var params = "type=removeProject&projId="+projId;
 		                http.open("POST",url,true);
 
@@ -238,7 +238,7 @@ function add_user(out, inp)
 //---------------------listUidNumbers-----------------------------------------------
 	function listUidNumber(usr, projId){
 		http = new XMLHttpRequest();
-                url = "controller.php";
+                url = "action.php";
                 params = "type=listUidNumbers&projId="+projId+"&usr="+usr;
                 http.open("POST",url,true);
 		
@@ -261,7 +261,7 @@ function add_user(out, inp)
                 }
                 else{
                                 http = new XMLHttpRequest();
-                                var url = "controller.php";
+                                var url = "action.php";
                                 var params = "type=editProject&projId="+projId;
                                 http.open("POST",url,true);
 
@@ -286,7 +286,7 @@ function add_user(out, inp)
 	//		unactive = "active_project"+projId;
                         http = new XMLHttpRequest();
                         http.onreadystatechange = stateActiveProject;
-                        http.open("GET","/agileProjects/controller.php?type=activeProject&projId="+projId);
+                        http.open("GET","/agileProjects/action.php?type=activeProject&projId="+projId);
                         http.send(null);
                         respostServer = http.responseXML;
         }
