@@ -25,7 +25,9 @@
 			$projId = $_POST['projId'];
 
 			$numUser = count($this->editElement->resultUidNumber);
-			$usrTasks=implode("|", $this->editElement->resultTasks);
+			if($this->editElement->resultTasks){
+				$usrTasks=implode("|", $this->editElement->resultTasks);
+			}
 			$list = new ldap_functions();
 			for($i=0;$i<$numUser;$i++){
 			

@@ -162,6 +162,27 @@ function add_user(out, inp)
                 http.send(params);
         }
 //-----------------------Fim Cria Projeto-------------------------------------------
+//----------------------Cria Sprint-------------------------------------------------
+        function newSprint(name, dt_start,dt_end, goal){
+                http = new XMLHttpRequest();
+                var url = "controller.php";
+                var params = "type=newSprint&name="+name+"&dt_start="+dt_start+"&dt_end="+dt_end+"&goal="+goal;
+                http.open("POST",url,true);
+    
+                //Send the proper header information along with the request
+                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                http.setRequestHeader("Content-length", params.length);
+                http.setRequestHeader("Connection", "close");
+
+                http.onreadystatechange = function() {//Call a function when the state changes.
+                        if(http.readyState == 4 && http.status == 200) {
+                                alert("Sprint criado com sucesso");
+                                dataRequest('tabs-3');
+                        }
+                }
+                http.send(params);
+        }
+//-----------------------Fim Cria Sprint--------------------------------------------
 //----------------------Cria Projeto------------------------------------------------
         function saveProject(projId,name,description,partic,admin){
                 var particArray = serialize(countValues(partic));
@@ -260,28 +281,6 @@ function add_user(out, inp)
 	}
 //--------------------Fim Edit Project----------------------------------------------
 //----------------------Active Project----------------------------------------------
-/*	function activeProject(projId){
-                        http = new XMLHttpRequest();
-                        http.onreadystatechange = stateActiveProject;
-                        http.open("GET","/agileProjects/controller.php?tabs=tabs-2&projId="+projId);
-                        http.send(null);
-                        respostServer = http.responseXML;
-        }
-        function stateActiveProject() {
-                if ( http.readyState == 4) { // Complete 
-                        if ( http.status == 200) { // server reply is OK
-                                document.getElementById('tabs-1').innerHTML = '';
-				document.getElementById('tabs-2').innerHTML =  http.responseText;
-				window.location="#tabs-2";
-				//document.getElementById('tabs-1').innerHTML = http.responseText ;
-                        } else {
-				alert( "Problema: " + http.statusText );
-                        }
-                }
-        }
-*/
-//----------------------Fim Active Project------------------------------------------
-//----------------------Active Project----------------------------------------------
         function activeProject(projId,activeId){
 	//		active = "active_project"+activeId;
 	//		unactive = "active_project"+projId;
@@ -302,3 +301,55 @@ function add_user(out, inp)
                 }
         }
 //----------------------Fim Active Project------------------------------------------
+//---------------------Verifica data------------------------------------------------
+          function mascara_data(d){ 
+              var mydata = ''; 
+              data = d.value; 
+              mydata = mydata + data; 
+              if (mydata.length == 2){ 
+                  mydata = mydata + '/'; 
+                  d.value = mydata; 
+              } 
+              if (mydata.length == 5){ 
+                  mydata = mydata + '/'; 
+                  d.value = mydata; 
+              } 
+              if (mydata.length == 10){ 
+                  verifica_data(d); 
+              } 
+          }
+          
+            function verifica_data (d) { 
+
+            dia = (d.value.substring(0,2)); 
+            mes = (d.value.substring(3,5)); 
+            ano = (d.value.substring(6,10)); 
+            
+
+            situacao = ""; 
+            // verifica o dia valido para cada mes 
+            if ((dia < 01)||(dia < 01 || dia > 30) && (  mes == 04 || mes == 06 || mes == 09 || mes == 11 ) || dia > 31) { 
+                situacao = "falsa"; 
+            } 
+
+            // verifica se o mes e valido 
+            if (mes < 01 || mes > 12 ) { 
+                situacao = "falsa"; 
+            }
+
+            // verifica se e ano bissexto 
+            if (mes == 2 && ( dia < 01 || dia > 29 || ( dia > 28 && (parseInt(ano / 4) != ano / 4)))) { 
+                situacao = "falsa"; 
+            } 
+    
+            if (d.value == "") { 
+                situacao = "falsa"; 
+            } 
+    
+            if (situacao == "falsa") { 
+                alert("Data incorreta");
+                d.value = ""; 
+                d.focus(); 
+            } 
+          }
+//--------------------Fim Verifica data---------------------------------------------
