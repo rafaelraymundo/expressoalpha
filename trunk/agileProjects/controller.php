@@ -34,10 +34,11 @@
 	}
 		if($_POST['type'] == 'project'){
 			include_once('inc/class.soinsertElement.inc.php');
-			$projectInsert = new soinsertElement(	$_POST['name'],
-								$_POST['description'],
-								$_POST['particArray'],
-								$_POST['adminArray']);
+			$projectInsert = new soinsertElement();
+			$projectInsert->soinsertProject(   $_POST['name'],
+                                                          $_POST['description'],
+                                                          $_POST['particArray'],
+                                                          $_POST['adminArray']);
 		}
 		if($_POST['type'] == 'saveProject'){
                         include_once('inc/class.sosaveElement.inc.php');
@@ -60,6 +61,13 @@
 			$_SESSION['phpgw_info']['expresso']['agileProjects']['active'] = $_GET['projId'];
                        // include_once('inc/class.uibacklogs.inc.php');
                        // $uibacklogs = new uibacklogs($_GET['projId']);
-                }		
-
+                }
+		if($_POST['type'] == 'newSprint'){
+			include_once('inc/class.soinsertElement.inc.php');
+			$newSprint = new soinsertElement();
+			$newSprint->soinsertSprint($_POST['name'],
+                                                   $_POST['dt_start'],
+                                                   $_POST['dt_end'],
+                                                   $_POST['goal']);
+		}
 ?>

@@ -53,7 +53,7 @@
 				$projOwner = $this->listProjects->db[$i][--$j];
 
 				if($_SESSION['phpgw_info']['expresso']['agileProjects']['active'] == $projId){
-					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projId."','".$_SESSION['    phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open_now.png'/>";
+					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projId."','".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open_now.png'/>";
 				}
 				else{
 					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open.png'/>";

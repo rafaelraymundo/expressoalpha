@@ -21,7 +21,7 @@
 	//Carregando common_functions e os scripts necessários para montar as abas
 	$obj = CreateObject("agileProjects.functions");
         $scripts = 	"js/jscode/common_functions.js,".
-			"js/jscode/jquery-ui-1.8.4.custom.min.js,".
+			"js/jscode/jquery-ui-1.8.6.custom.min.js,".
 			"js/jscode/tabs.js,".
 			"js/jscode/edit_element.js";
 	echo $obj -> getFilesJs($scripts);

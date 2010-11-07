@@ -1,8 +1,6 @@
 /* ESSAS TABELAS SERAO INCLUIDAS PARA SEREM INSTALADAS JUNTAMENTE COM A FERRAMENTA*/
 /********* CRIANDO AS SEQUENCES ***************************************************/
 
-/********* CRIANDO AS SEQUENCES *****************/
-
 CREATE SEQUENCE seq_egw_wf_agile_projects
     START WITH 1
     INCREMENT BY 1
@@ -52,12 +50,12 @@ CREATE TABLE phpgw_agile_projects (
 
 CREATE TABLE phpgw_agile_sprints(
 	sprints_id integer DEFAULT nextval('seq_egw_wf_agile_sprints'::regclass) PRIMARY KEY NOT NULL,
-	sprints_proj_id integer references phpgw_agile_projects(proj_id) ON DELETE CASCADE NOT NULL,
+	sprints_id_proj integer references phpgw_agile_projects(proj_id) ON DELETE CASCADE NOT NULL,
 	sprints_name varchar (100) NOT NULL,
 	sprints_goal varchar (255) NOT NULL,
 	sprints_dt_start date NOT NULL,
 	sprints_dt_end date NOT NULL,
-	sprints_retrospective varchar (255) NOT NULL
+	sprints_retrospective varchar (255)
 );
 
 CREATE TABLE phpgw_agile_tasks(
