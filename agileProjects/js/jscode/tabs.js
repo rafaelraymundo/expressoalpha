@@ -64,7 +64,7 @@
 		tab = tabRequest;
 		http = new XMLHttpRequest();
 		http.onreadystatechange = stateProc;
-		http.open("GET","/agileProjects/controller.php?tabs="+tabRequest+"");
+		http.open("GET","/agileProjects/action.php?tabs="+tabRequest+"");
 		http.send(null);
 		respostServer = http.responseXML;
 	}
@@ -180,7 +180,7 @@
 		field = boxField;
                 http = new XMLHttpRequest();
                 http.onreadystatechange = stateUserInclude;
-                http.open("GET","/agileProjects/c2.php?action=agileProjects.ldap_functions.search_users_only&tipo=search&filtro="+filter+"");
+                http.open("GET","/agileProjects/controller.php?action=agileProjects.ldap_functions.search_users_only&tipo=search&filtro="+filter+"");
                 http.send(null);
                 respostServer = http.responseXML;
         }
