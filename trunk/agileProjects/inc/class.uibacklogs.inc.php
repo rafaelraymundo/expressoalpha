@@ -48,7 +48,10 @@
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_title'][$i]."</td>
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_subtitle'][$i]."</td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_description'][$i]."</td>
-						  <td><button type=\"button\" onClick=\"javascript:taskExecute();\">[ ".lang('Execute task')." ]</button></td>
+						  <td>
+							<img title='Editar' src='templates/default/images/edit.png'/>
+							<img title='Excluir' src='templates/default/images/delete.png'/>
+						  </td>
 		                                </tr>";
 					if($line == "alt"){
                          			$line="";
