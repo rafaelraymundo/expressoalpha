@@ -62,6 +62,10 @@
                        // include_once('inc/class.uibacklogs.inc.php');
                        // $uibacklogs = new uibacklogs($_GET['projId']);
                 }
+                if($_GET['type'] == 'taskInclude'){
+			include_once('inc/class.uitaskInclude.inc.php');
+			$taskInclude = new uitaskInclude();
+                }
 		if($_POST['type'] == 'newSprint'){
 			include_once('inc/class.soinsertElement.inc.php');
 			$newSprint = new soinsertElement();
