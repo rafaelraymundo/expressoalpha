@@ -66,7 +66,7 @@ CREATE TABLE phpgw_agile_tasks(
 	tasks_title varchar (255),
 	tasks_subtitle varchar (255),
 	tasks_description varchar (255),
-	tasks_status varchar(10)
+	tasks_status varchar(20)
 );
 
 CREATE TABLE phpgw_agile_users_projects(uprojects_id_user varchar(100) NOT NULL,

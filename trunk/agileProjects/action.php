@@ -66,6 +66,17 @@
 			include_once('inc/class.uitaskInclude.inc.php');
 			$taskInclude = new uitaskInclude();
                 }
+		if($_POST['type'] == 'newTask'){
+			system("echo \"TESTE\" >/tmp/control.txt");
+
+			include_once('inc/class.soinsertElement.inc.php');
+			$newTask = new soinsertElement();
+			$newTask->soinsertTask(	 $_POST['sprint'],
+						 $_POST['responsable'],
+						 $_POST['title'],
+						 $_POST['subtitle'],
+						 $_POST['description']);
+		}
 		if($_POST['type'] == 'newSprint'){
 			include_once('inc/class.soinsertElement.inc.php');
 			$newSprint = new soinsertElement();
