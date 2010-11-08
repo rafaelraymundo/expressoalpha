@@ -138,11 +138,11 @@
         //---------------Include Tasks------------------------------------------
         function taskInclude(){
 
-                        http = new XMLHttpRequest();
-                        http.onreadystatechange = stateIncludeTask;
-                        http.open("GET","/agileProjects/inc/taskInclude.inc.php");
-                        http.send(null);
-                        respostServer = http.responseXML;
+		http = new XMLHttpRequest();
+		http.onreadystatechange = stateIncludeTask;
+		http.open("GET","action.php?type=taskInclude");
+		http.send(null);
+		respostServer = http.responseXML;
         }
         function stateIncludeTask() {
                 if ( http.readyState == 4) { // Complete 
