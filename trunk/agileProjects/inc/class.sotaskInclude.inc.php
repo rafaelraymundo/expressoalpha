@@ -11,7 +11,7 @@
 
 
         class sotaskInclude{
-                var $sprint_name;
+                var $sprints_name;
                 var $sprintsElements;
     
 
@@ -21,16 +21,16 @@
 
                         $projId = $_SESSION['phpgw_info']['expresso']['agileProjects']['active'];
 
-                        $this->sprint_name = $GLOBALS['phpgw']->db;
+                        $this->sprints_name = $GLOBALS['phpgw']->db;
                         
                         $list = new ldap_functions();
 
-                        $this->sprint_name->query('SELECT sprint_name FROM phpgw_agile_sprints WHERE sprints_id_proj='.$projId,__LINE__,__FILE__);
-                        if($this->sprint_name->num_rows()){
+                        $this->sprints_name->query('SELECT sprints_name FROM phpgw_agile_sprints WHERE sprints_id_proj='.$projId,__LINE__,__FILE__);
+                        if($this->sprints_name->num_rows()){
                                 $i=0;
-                                while($this->sprint_name->next_record())
+                                while($this->sprints_name->next_record())
                                 {
-                                        $this->sprintsElements['sprint_name'][$i] = $this->sprint_name->f('sprint_name');
+                                        $this->sprintsElements['sprints_name'][$i] = $this->sprints_name->f('sprints_name');
                                         $i++;
                                 }
                         }
