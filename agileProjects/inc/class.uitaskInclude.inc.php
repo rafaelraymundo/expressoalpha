@@ -55,8 +55,8 @@
 				<tr class=''><td>Descricao: </td><td><textarea id=\"description\" cols=\"38\" rows=\"4\"></textarea></td></tr>
 			</table>
 			<button onclick=\"javascript:newTask(
-						document.getElementById('sprint').selectedIndex,
-						document.getElementById('responsable').selectedIndex,
+						document.getElementById('sprint').value,
+						document.getElementById('responsable').value,
 						document.getElementById('title').value,
 						document.getElementById('subtitle').value,
 						document.getElementById('description').value

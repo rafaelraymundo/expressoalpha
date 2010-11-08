@@ -183,6 +183,27 @@ function add_user(out, inp)
                 http.send(params);
         }
 //-----------------------Fim Cria Sprint--------------------------------------------
+//----------------------Cria Tarefa-------------------------------------------------
+        function newTask(sprint,responsable,title,subtitle,description){
+                http = new XMLHttpRequest();
+                var url = "action.php";
+                var params = "type=newTask&sprint="+sprint+"&responsable="+responsable+"&title="+title+"&subtitle="+subtitle+"&description="+description;
+                http.open("POST",url,true);
+    
+                //Send the proper header information along with the request
+                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                http.setRequestHeader("Content-length", params.length);
+                http.setRequestHeader("Connection", "close");
+
+                http.onreadystatechange = function() {//Call a function when the state changes.
+                        if(http.readyState == 4 && http.status == 200) {
+                                alert("Tarefa criada com sucesso");
+                                dataRequest('tabs-2');
+                        }
+                }
+                http.send(params);
+        }
+//-----------------------Fim Cria Tarefa--------------------------------------------
 //----------------------Cria Projeto------------------------------------------------
         function saveProject(projId,name,description,partic,admin){
                 var particArray = serialize(countValues(partic));
