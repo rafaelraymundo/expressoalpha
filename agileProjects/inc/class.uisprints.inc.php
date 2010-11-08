@@ -50,7 +50,11 @@
                                                   <td>".$this->listSprints->sprintsElements['sprints_dt_start'][$i]."</td>
                                                   <td>".$this->listSprints->sprintsElements['sprints_dt_end'][$i]."</td>
 						  <td>".$this->listSprints->sprintsElements['sprints_retrospective'][$i]."</td>
-                                                  <td><button type=\"button\" onClick=\"javascript:sprintExecute();\">[ ".lang('Execute sprint')." ]</button></td>
+                                                  <td>
+							<img title='Abrir' src='templates/default/images/open.png'/>
+							<img title='Editar' src='templates/default/images/edit.png'/>
+							<img title='Excluir' src='templates/default/images/delete.png'/>
+						  </td>
                                                 </tr>";
                                         if($line == "alt"){
                                                 $line="";
