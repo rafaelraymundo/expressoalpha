@@ -59,16 +59,17 @@
 		}
                 if($_GET['type'] == 'activeProject'){
 			$_SESSION['phpgw_info']['expresso']['agileProjects']['active'] = $_GET['projId'];
-                       // include_once('inc/class.uibacklogs.inc.php');
-                       // $uibacklogs = new uibacklogs($_GET['projId']);
+                }
+                if($_GET['type'] == 'activeSprint'){
+			include_once('inc/class.sosprints.inc.php');
+			$sprintActive = new sosprints();
+			$sprintActive->soactiveSprint($_GET['sprintId']);
                 }
                 if($_GET['type'] == 'taskInclude'){
 			include_once('inc/class.uitaskInclude.inc.php');
 			$taskInclude = new uitaskInclude();
                 }
 		if($_POST['type'] == 'newTask'){
-			system("echo \"TESTE\" >/tmp/control.txt");
-
 			include_once('inc/class.soinsertElement.inc.php');
 			$newTask = new soinsertElement();
 			$newTask->soinsertTask(	 $_POST['sprint'],

@@ -59,7 +59,6 @@
 					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open.png'/>";
 				}
 			echo	"
-	<!--				<img name=\"active_project\" onclick=\"javascript:dataRequest('tabs-2');\" title='Abrir' src='templates/default/images/open.png'/> -->
 					".$projActive."
 					<img onclick=\"editProject(".$projId.",'".$projOwner."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Editar' src='templates/default/images/edit.png'/> 
 					<img onclick=\"removeProject('".$projName."',".$projId.",'".$projOwner."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Excluir' src='templates/default/images/delete.png'/>
