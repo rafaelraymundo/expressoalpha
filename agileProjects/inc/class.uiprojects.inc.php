@@ -39,12 +39,18 @@
 		</thead>
 		<tbody>";
 		for($i=0;$i<$num;$i++){
-			for($j=0;$j<2;$j++){
+		    for($j=0;$j<2;$j++){
+			$sel='<B>';
+			$unsel='</B>';		
+			if($_SESSION['phpgw_info']['expresso']['agileProjects']['active'] != $this->listProjects->projId[$i][$j]){
+				$sel = '';
+				$unsel = '';
+			}
 		
 	 		echo	"<tr class=".$line.">
-				  <td>".$this->listProjects->db[$i][$j]."</td>
-	                          <td>".$this->listProjects->db[$i][++$j]."</td>
-        	                  <td>".$this->listProjects->db[$i][++$j]."</td>
+				  <td>".$sel.$this->listProjects->db[$i][$j].$unsel."</td>
+	                          <td>".$sel.$this->listProjects->db[$i][++$j].$unsel."</td>
+        	                  <td>".$sel.$this->listProjects->db[$i][++$j].$unsel."</td>
                 	          <td>
 				";
 

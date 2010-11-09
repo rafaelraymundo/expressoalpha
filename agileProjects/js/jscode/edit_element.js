@@ -314,7 +314,7 @@ function add_user(out, inp)
         function stateActiveProject() {
                 if ( http.readyState == 4) { // Complete 
                         if ( http.status == 200) { // server reply is OK
-				window.location.reload();
+				dataRequest('tabs-1');
 				alert("Projeto carregado com sucesso ");
                         } else {
                                 alert( "Problema: " + http.statusText );
@@ -333,7 +333,6 @@ function add_user(out, inp)
         function stateActiveSprint() {
                 if ( http.readyState == 4) { // Complete 
                         if ( http.status == 200) { // server reply is OK
-                               // window.location.reload();
 				dataRequest('tabs-3');
                                 alert("Sprint carregado com sucesso ");
                         } else {
