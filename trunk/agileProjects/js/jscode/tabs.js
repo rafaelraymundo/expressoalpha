@@ -84,7 +84,7 @@
 					   $("#sprintBacklog,#doing,#tests,#done").sortable({
                     				connectWith: '.connectedSortable',
                     				receive: function(event, ui) { 
-                        //			  alert($(ui.item).attr('data-id') + ' -> ' + $(this).attr('id'));
+			//			  alert($(ui.item).attr('data-id') + ' -> ' + $(this).attr('id'));
                         			  //Do something with the recently dropped item here
                     				}
                 			   }).disableSelection();

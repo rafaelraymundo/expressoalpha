@@ -322,6 +322,26 @@ function add_user(out, inp)
                 }
         }
 //----------------------Fim Active Project------------------------------------------
+//----------------------Active Sprint-----------------------------------------------
+        function activeSprint(sprintId){
+                        http = new XMLHttpRequest();
+                        http.onreadystatechange = stateActiveSprint;
+                        http.open("GET","/agileProjects/action.php?type=activeSprint&sprintId="+sprintId);
+                        http.send(null);
+                        respostServer = http.responseXML;
+        }
+        function stateActiveSprint() {
+                if ( http.readyState == 4) { // Complete 
+                        if ( http.status == 200) { // server reply is OK
+                               // window.location.reload();
+				dataRequest('tabs-3');
+                                alert("Sprint carregado com sucesso ");
+                        } else {
+                                alert( "Problema: " + http.statusText );
+                        }
+                }
+        }
+//----------------------Fim Active Sprint-------------------------------------------
 //---------------------Verifica data------------------------------------------------
           function mascara_data(d){ 
               var mydata = ''; 

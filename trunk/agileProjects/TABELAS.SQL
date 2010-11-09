@@ -55,7 +55,8 @@ CREATE TABLE phpgw_agile_sprints(
 	sprints_goal varchar (255) NOT NULL,
 	sprints_dt_start date NOT NULL,
 	sprints_dt_end date NOT NULL,
-	sprints_retrospective varchar (255)
+	sprints_retrospective varchar (255),
+	sprints_status boolean DEFAULT false
 );
 
 CREATE TABLE phpgw_agile_tasks(

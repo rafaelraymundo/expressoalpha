@@ -23,7 +23,7 @@
                         }
                         else{
                                 $this->listSprints = new sosprints();
-                                $this->listSprints->sosprints();
+                                $this->listSprints->sosprintsList();
 
                                 $numBacklogs = count($this->listSprints->sprintsElements['sprints_name']);
                                 echo    "<div><button type=\"button\" onClick=\"javascript:sprintInclude();\">[ ".lang('Include sprint')." ]</button><br/><br/>";
@@ -43,15 +43,22 @@
                                           <tbody>";
                                 }
                                 for($i=0;$i<$numBacklogs;$i++){
+						$sel = '';
+						$unsel='';
+
+						if(($this->listSprints->sprintsElements['sprints_status'][$i]) == 't'){
+							$sel = '<B>';
+							$unsel = '</B>';
+						}
 
                                                 echo    "<tr class=".$line.">
-                                                  <td>".$this->listSprints->sprintsElements['sprints_name'][$i]."</td>
-                                                  <td>".$this->listSprints->sprintsElements['sprints_goal'][$i]."</td>
-                                                  <td>".$this->listSprints->sprintsElements['sprints_dt_start'][$i]."</td>
-                                                  <td>".$this->listSprints->sprintsElements['sprints_dt_end'][$i]."</td>
-						  <td>".$this->listSprints->sprintsElements['sprints_retrospective'][$i]."</td>
+                                                  <td>".$sel.$this->listSprints->sprintsElements['sprints_name'][$i].$unsel."</td>
+                                                  <td>".$sel.$this->listSprints->sprintsElements['sprints_goal'][$i].$unsel."</td>
+                                                  <td>".$sel.$this->listSprints->sprintsElements['sprints_dt_start'][$i].$unsel."</td>
+                                                  <td>".$sel.$this->listSprints->sprintsElements['sprints_dt_end'][$i].$unsel."</td>
+						  <td>".$sel.$this->listSprints->sprintsElements['sprints_retrospective'][$i].$unsel."</td>
                                                   <td>
-							<img title='Abrir' src='templates/default/images/open.png'/>
+							<img onclick=\"activeSprint(".$this->listSprints->sprintsElements['sprints_id'][$i].");\" title='Abrir' src='templates/default/images/open.png'/>
 							<img title='Editar' src='templates/default/images/edit.png'/>
 							<img title='Excluir' src='templates/default/images/delete.png'/>
 						  </td>
