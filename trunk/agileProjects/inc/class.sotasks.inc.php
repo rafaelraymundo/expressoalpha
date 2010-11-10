@@ -58,7 +58,7 @@ include_once('../header.inc.php');
 			$projId = $_SESSION['phpgw_info']['expresso']['agileProjects']['active'];
 
 			$this->tasks_info = $GLOBALS['phpgw']->db;
-			$this->tasks_info->query("SELECT tasks_id,tasks_id_owner,tasks_title,tasks_description from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='sprintBacklog'",__LINE__,__FILE__);
+			$this->tasks_info->query("SELECT tasks_id,tasks_id_owner,tasks_title,tasks_description from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='$idCol'",__LINE__,__FILE__);
 			if($this->tasks_info->num_rows()){
 				$i=0;
 				while($this->tasks_info->next_record()){
