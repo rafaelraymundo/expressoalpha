@@ -93,7 +93,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 			return($col);
 		}
 		function task($owner='',$tasks_id,$tasks_title='',$tasks_description=''){
-		$task.="<div data-id=\"buble".$tasks_id."\" class=\"buble\" style=\"\">
+		$task.="<div data-id=".$tasks_id." class=\"buble\" style=\"\">
                     <div class=\"buble-content\">
                         <span class=\"task\">
                         <span class=\"msg_list\">

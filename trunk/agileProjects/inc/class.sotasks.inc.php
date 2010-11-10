@@ -18,6 +18,7 @@ include_once('../header.inc.php');
 		var $user_id;
 		var $tasks_info;
 		var $tasksElements;
+		var $update_bubble;
     
 
                 function sotaskInclude(){
@@ -69,6 +70,12 @@ include_once('../header.inc.php');
 					$i++;
 				}
 			}
+		}
+		function soupdateBubble($tasks_id,$tasks_status){
+			include_once('../phpgwapi/inc/class.db.inc.php');
+
+			$this->update_bubble = $GLOBALS['phpgw']->db;
+			$this->update_bubble->query("UPDATE phpgw_agile_tasks SET tasks_status = '$tasks_status' WHERE tasks_id = $tasks_id",__LINE__,__FILE__);
 		}
         }
 ?>

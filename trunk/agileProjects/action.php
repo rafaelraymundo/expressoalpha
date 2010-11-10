@@ -86,4 +86,12 @@
                                                    $_POST['dt_end'],
                                                    $_POST['goal']);
 		}
+		if($_GET['type'] == 'updateBubble'){
+			include_once('inc/class.sotasks.inc.php');
+			$sotasks = new sotasks();
+			$sotasks->soupdateBubble($_GET['tasks_id'],
+						 $_GET['tasks_status']
+						);
+			
+		}
 ?>
