@@ -19,7 +19,7 @@ include_once('../header.inc.php');
 		var $tasks_info;
 		var $tasksElements;
 		var $update_bubble;
-    
+		var $sprints_id;
 
                 function sotaskInclude(){
                         include_once('../phpgwapi/inc/class.db.inc.php');
@@ -55,11 +55,19 @@ include_once('../header.inc.php');
 
 		function sotasksKanban($idCol){
 			include_once('../phpgwapi/inc/class.db.inc.php');
-
+			
 			$projId = $_SESSION['phpgw_info']['expresso']['agileProjects']['active'];
 
+			//Inicialmente obter o ID do SprintAtivo nesse projeto para buscar suas tarefas
+			$this->sprints_id=$GLOBALS['phpgw']->db;
+			$this->sprints_id->query("SELECT sprints_id from phpgw_agile_sprints WHERE sprints_id_proj=$projId AND sprints_status='t'",__LINE__,__FILE__);
+			while($this->sprints_id->next_record()){
+				$sprintsIdElements[] = $this->sprints_id->f('sprints_id');
+			}
+			//-------------------------SprintID encontrado---------------------------------
+
 			$this->tasks_info = $GLOBALS['phpgw']->db;
-			$this->tasks_info->query("SELECT tasks_id,tasks_id_owner,tasks_title,tasks_description from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='$idCol'",__LINE__,__FILE__);
+			$this->tasks_info->query("SELECT tasks_id,tasks_id_owner,tasks_title,tasks_description from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='$idCol' AND tasks_id_sprints=$sprintsIdElements[0]",__LINE__,__FILE__);
 			if($this->tasks_info->num_rows()){
 				$i=0;
 				while($this->tasks_info->next_record()){
