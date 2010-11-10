@@ -59,6 +59,23 @@
                 });
         });
 */	//-------------------End Tasks---------------------------------------
+	//------------------Update Bubble------------------------------------
+	function updateBubble(tasks_id,tasks_status){
+
+		http = new XMLHttpRequest();
+		http.onreadystatechange = stateUpdateBubble;
+		http.open("GET","action.php?type=updateBubble&tasks_id="+tasks_id+"&tasks_status="+tasks_status+"");
+		http.send(null);
+		respostServer = http.responseXML;
+        }
+        function stateUpdateBubble() {
+                if ( http.readyState == 4) { // Complete 
+                        if ( http.status != 200) { // server reply is OK
+                                alert( "Problema: " + http.statusText );
+                        }
+                }
+	}
+	//------------------Fim update bubble--------------------------------
 	//----------------Alter Tabs----------------------------------------
 	function dataRequest(tabRequest){
 		tab = tabRequest;
@@ -83,8 +100,9 @@
                         	        $(document).ready(function(){
 					   $("#sprintBacklog,#doing,#tests,#done").sortable({
                     				connectWith: '.connectedSortable',
-                    				receive: function(event, ui) { 
-			//			  alert($(ui.item).attr('data-id') + ' -> ' + $(this).attr('id'));
+                    				receive: function(event, ui) {
+						updateBubble(($(ui.item).attr('data-id')),($(this).attr('id')));
+				//		  alert($(ui.item).attr('data-id') + ' -> ' + $(this).attr('id'));
                         			  //Do something with the recently dropped item here
                     				}
                 			   }).disableSelection();
