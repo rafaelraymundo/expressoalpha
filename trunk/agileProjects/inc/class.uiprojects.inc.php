@@ -25,10 +25,11 @@
 			$template = CreateObject('phpgwapi.Template',PHPGW_APP_TPL);
                         $template->set_file(Array('agileProjects' => 'projects.tpl'));
                         $template->set_block('agileProjects','body');
-
-			echo("<div align=right>Projeto executado: ");
-			print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
-			echo ("</div>");
+			if($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']){
+				echo("<div align=right>Projeto executado: ");
+				print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
+				echo ("</div>");
+			}
 	
 	echo	"<div><button type=\"button\" onClick=\"javascript:projectInclude();\">[ ".lang('Include project')." ]</button><br/><br/>
 
