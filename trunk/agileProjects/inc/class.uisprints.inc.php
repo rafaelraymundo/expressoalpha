@@ -22,6 +22,9 @@
                                 exit();
                         }
                         else{
+				echo("<div align=right>Projeto executado: ");
+				print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
+				echo ("</div>");
                                 $this->listSprints = new sosprints();
                                 $this->listSprints->sosprintsList();
 

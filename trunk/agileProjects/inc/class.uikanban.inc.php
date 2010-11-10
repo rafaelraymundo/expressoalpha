@@ -30,6 +30,9 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                 echo "Primeiro selecione um projeto";
 				exit();
                         }
+                        echo("<div align=right>Projeto executado: ");
+                        print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
+                        echo ("</div>");
 
 			echo "	<div class=\"container\">
 				<ul class=\"column\" style=\"width:1213px;\">";
