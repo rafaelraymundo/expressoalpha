@@ -9,8 +9,8 @@
         *  option) any later version.                                                                   *
         \***********************************************************************************************/
 
-        include('inc/class.sotaskInclude.inc.php');
-        include('../header.inc.php');
+        include('inc/class.sotasks.inc.php');
+ //       include('../header.inc.php');
 
         class uitaskInclude{
 	
@@ -20,7 +20,7 @@
 			
 			include_once('inc/class.ldap_functions.inc.php');
 			$list = new ldap_functions();
-			$this->sprints = new sotaskInclude();
+			$this->sprints = new sotasks();
 			$sprints = $this->sprints->sotaskInclude();
 			
 			for($i=0;$i<count($this->sprints->sprintsElements['sprints_name']);$i++){

@@ -8,14 +8,16 @@
         *  Free Software Foundation; either version 2 of the License, or (at your                       *
         *  option) any later version.                                                                   *
         \***********************************************************************************************/
+include_once('../header.inc.php');
 
-
-        class sotaskInclude{
+        class sotasks{
                 var $sprints_name;
                 var $sprintsElements;
 		var $sprintsIdElements;
 		var $usersElements;
 		var $user_id;
+		var $tasks_info;
+		var $tasksElements;
     
 
                 function sotaskInclude(){
@@ -48,11 +50,25 @@
 					$i++;
 				}
 			}
-			
-/*$t=count($this->sprintsElements['sprints_name']);
-echo ($t);
-print_r($this->sprintsElements);
-*/
                 }
+
+		function sotasksKanban($idCol){
+			include_once('../phpgwapi/inc/class.db.inc.php');
+
+			$projId = $_SESSION['phpgw_info']['expresso']['agileProjects']['active'];
+
+			$this->tasks_info = $GLOBALS['phpgw']->db;
+			$this->tasks_info->query("SELECT tasks_id,tasks_id_owner,tasks_title,tasks_description from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='sprintBacklog'",__LINE__,__FILE__);
+			if($this->tasks_info->num_rows()){
+				$i=0;
+				while($this->tasks_info->next_record()){
+					$this->tasksElements['tasks_id'][$i] = $this->tasks_info->f('tasks_id');
+					$this->tasksElements['tasks_id_owner'][$i] = $this->tasks_info->f('tasks_id_owner');
+					$this->tasksElements['tasks_title'][$i] = $this->tasks_info->f('tasks_title');
+					$this->tasksElements['tasks_description'][$i] = $this->tasks_info->f('tasks_description');
+					$i++;
+				}
+			}
+		}
         }
 ?>
