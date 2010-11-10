@@ -59,6 +59,7 @@
 		}
                 if($_GET['type'] == 'activeProject'){
 			$_SESSION['phpgw_info']['expresso']['agileProjects']['active'] = $_GET['projId'];
+			$_SESSION['phpgw_info']['expresso']['agileProjects']['projectName'] = $_GET['projName'];
                 }
                 if($_GET['type'] == 'activeSprint'){
 			include_once('inc/class.sosprints.inc.php');

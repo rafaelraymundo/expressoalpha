@@ -302,12 +302,12 @@ function add_user(out, inp)
 	}
 //--------------------Fim Edit Project----------------------------------------------
 //----------------------Active Project----------------------------------------------
-        function activeProject(projId,activeId){
+        function activeProject(projName,projId,activeId){
 	//		active = "active_project"+activeId;
 	//		unactive = "active_project"+projId;
                         http = new XMLHttpRequest();
                         http.onreadystatechange = stateActiveProject;
-                        http.open("GET","/agileProjects/action.php?type=activeProject&projId="+projId);
+                        http.open("GET","/agileProjects/action.php?type=activeProject&projId="+projId+"&projName="+projName);
                         http.send(null);
                         respostServer = http.responseXML;
         }

@@ -25,6 +25,10 @@
 			$template = CreateObject('phpgwapi.Template',PHPGW_APP_TPL);
                         $template->set_file(Array('agileProjects' => 'projects.tpl'));
                         $template->set_block('agileProjects','body');
+
+			echo("<div align=right>Projeto executado: ");
+			print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
+			echo ("</div>");
 	
 	echo	"<div><button type=\"button\" onClick=\"javascript:projectInclude();\">[ ".lang('Include project')." ]</button><br/><br/>
 
@@ -59,10 +63,10 @@
 				$projOwner = $this->listProjects->db[$i][--$j];
 
 				if($_SESSION['phpgw_info']['expresso']['agileProjects']['active'] == $projId){
-					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projId."','".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open_now.png'/>";
+					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projName."','".$projId."','".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open_now.png'/>";
 				}
 				else{
-					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open.png'/>";
+					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projName."','".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open.png'/>";
 				}
 			echo	"
 					".$projActive."
