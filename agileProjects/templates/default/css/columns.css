@@ -39,17 +39,17 @@ ul.column li {
         height: 330px;
         font-size: 1em;
         margin-right: 10px;
-        padding: 20px;
+        padding: 15px;
         background: #e3e1d5;
         -moz-border-radius: 3px;
         -khtml-border-radius: 3px;
         -webkit-border-radius: 3px;
 }
 .block_title {
-        height: 400px;
+        height: 453px;
         font-size: 1em;
         margin-right: 10px;
-        padding: 20px;
+        padding: 5px 0 0 5px;
         background: #e3e1d5;
         -moz-border-radius: 3px;
         -khtml-border-radius: 3px;
