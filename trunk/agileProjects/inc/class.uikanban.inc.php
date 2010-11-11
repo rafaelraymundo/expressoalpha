@@ -105,7 +105,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                 </span>
                                 <B>".$tasks_title."</B>
                                 <button class=\"msg_head\">+</button>
-                                <div class=\"msg_body\" style=\"display: none;\">".$tasks_description."</div>
+                                <div class=\"msg_body\" style=\"background-color:#fbf9a5; display: none;\">".$tasks_description."</div>
                                 <span class=\"footer\"> Estimativa: xxx dias</span>
                         </span></span>
                     </div>
