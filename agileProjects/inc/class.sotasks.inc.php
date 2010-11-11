@@ -64,6 +64,9 @@ include_once('../header.inc.php');
 			while($this->sprints_id->next_record()){
 				$sprintsIdElements[] = $this->sprints_id->f('sprints_id');
 			}
+			if (!$sprintsIdElements[0]){
+				$sprintsIdElements[0]=0;
+			}	
 			//-------------------------SprintID encontrado---------------------------------
 
 			$this->tasks_info = $GLOBALS['phpgw']->db;
