@@ -50,8 +50,9 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 			$list = new ldap_functions();
 
 			$col.= "<li style=\"width:303px\">";
-			$col.= "<div id=\"$idCol\" class=\"block connectedSortable\">";
+			$col.= "<div class=\"block_title\">";
 			$col.= "<h2>".$colName."</h2>";
+			$col.= "<div id=\"$idCol\" class=\"block connectedSortable\">";
 			switch($idCol){
 				case 'sprintBacklog':
 					$sotasks->sotasksKanban('sprintBacklog');
