@@ -64,8 +64,8 @@ CREATE TABLE phpgw_agile_tasks(
 	tasks_id_sprints integer references phpgw_agile_sprints(sprints_id) ON DELETE CASCADE,
 	tasks_id_proj integer references phpgw_agile_projects(proj_id) ON DELETE CASCADE,
 	tasks_id_owner integer,
+	tasks_estimate integer,
 	tasks_title varchar (255),
-	tasks_subtitle varchar (255),
 	tasks_description varchar (255),
 	tasks_status varchar(20)
 );

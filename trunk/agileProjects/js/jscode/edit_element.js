@@ -184,10 +184,10 @@ function add_user(out, inp)
         }
 //-----------------------Fim Cria Sprint--------------------------------------------
 //----------------------Cria Tarefa-------------------------------------------------
-        function newTask(sprint,responsable,title,subtitle,description){
+        function newTask(sprint,responsable,title,description,estimate){
                 http = new XMLHttpRequest();
                 var url = "action.php";
-                var params = "type=newTask&sprint="+sprint+"&responsable="+responsable+"&title="+title+"&subtitle="+subtitle+"&description="+description;
+                var params = "type=newTask&sprint="+sprint+"&responsable="+responsable+"&title="+title+"&description="+description+"&estimate="+estimate;
                 http.open("POST",url,true);
     
                 //Send the proper header information along with the request

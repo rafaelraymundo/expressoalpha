@@ -51,15 +51,15 @@
 		                                                </select>
 		                </td></tr>
 				<tr class=''><td>Titulo: </td><td><input type=\"text\" id=\"title\" size='40'></td></tr>
-				<tr class='alt'><td>Subtitulo: </td><td><input type=\"text\" id=\"subtitle\" size='40'></td></tr>
-				<tr class=''><td>Descricao: </td><td><textarea id=\"description\" cols=\"38\" rows=\"4\"></textarea></td></tr>
+				<tr class='alt'><td>Descricao: </td><td><textarea id=\"description\" cols=\"38\" rows=\"4\"></textarea></td></tr>
+				<tr class=''><td>Estimativa: </td><td><input type=\"text\" id=\"estimate\" size='20'> pontos</td></tr>
 			</table>
 			<button onclick=\"javascript:newTask(
 						document.getElementById('sprint').value,
 						document.getElementById('responsable').value,
 						document.getElementById('title').value,
-						document.getElementById('subtitle').value,
-						document.getElementById('description').value
+						document.getElementById('description').value,
+						document.getElementById('estimate').value
 						);\" type=\"button\">:: Criar tarefa ::</button>
 			";
 		}//End function
