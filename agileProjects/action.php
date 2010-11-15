@@ -76,8 +76,8 @@
 			$newTask->soinsertTask(	 $_POST['sprint'],
 						 $_POST['responsable'],
 						 $_POST['title'],
-						 $_POST['subtitle'],
-						 $_POST['description']);
+						 $_POST['description'],
+						 $_POST['estimate']);
 		}
 		if($_POST['type'] == 'newSprint'){
 			include_once('inc/class.soinsertElement.inc.php');

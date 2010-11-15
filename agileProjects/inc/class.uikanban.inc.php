@@ -60,7 +60,8 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 						$tasks_id=$sotasks->tasksElements['tasks_id'][$i];
 						$tasks_title=$sotasks->tasksElements['tasks_title'][$i];
 						$tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description);
+						$tasks_estimate=$sotasks->tasksElements['tasks_estimate'][$i];
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
                         		}
 				break;
 				case 'doing':
@@ -69,7 +70,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                                 $tasks_id=$sotasks->tasksElements['tasks_id'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-                                                $col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
                                         }					
 				break;
 				case 'tests':
@@ -78,7 +79,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                                 $tasks_id=$sotasks->tasksElements['tasks_id'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-                                                $col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
                                         }					
 				break;
 				case 'done':
@@ -87,7 +88,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                                 $tasks_id=$sotasks->tasksElements['tasks_id'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-                                                $col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
                                         }
 				break;
 			}
@@ -96,7 +97,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 		
 			return($col);
 		}
-		function task($owner='',$tasks_id,$tasks_title='',$tasks_description=''){
+		function task($owner='',$tasks_id,$tasks_title='',$tasks_description='',$tasks_estimate){
 		$task.="<div data-id=".$tasks_id." class=\"buble\" style=\"\">
                     <div class=\"buble-content\">
                         <span class=\"task\">
@@ -107,7 +108,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                 <B>".$tasks_title."</B>
                                 <button class=\"msg_head\">+</button>
                                 <div class=\"msg_body\" style=\"background-color:#fbf9a5; display: none;\">".$tasks_description."</div>
-                                <span class=\"footer\"> Estimativa: xxx dias</span>
+                                <span class=\"footer\"> Estimativa: ".$tasks_estimate." pontos</span>
                         </span></span>
                     </div>
                 </div>
