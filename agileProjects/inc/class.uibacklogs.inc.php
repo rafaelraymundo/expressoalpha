@@ -25,10 +25,9 @@
 	                        echo("<div align=right>Projeto executado: ");
 	                        print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
         	                echo ("</div>");
-
 				$this->listBacklogs = new sobacklogs();
 				$this->listBacklogs->sobacklogs();
-
+print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
 				$numBacklogs = count($this->listBacklogs->tasksElements['tasks_owner']);
 			        echo    "<div><button type=\"button\" onClick=\"javascript:taskInclude();\">[ ".lang('Include task')." ]</button><br/><br/>";
 				if (count($this->listBacklogs->tasksElements) > 0 ){
@@ -38,8 +37,8 @@
 			                     <tr>
 			                        <th>".lang('Responsable')."</th>
 			                        <th>".lang('Title')."</th>
-			                        <th>".lang('Subtitle')."</th>
 			                        <th>".lang('Description')."</th>
+						<th>".lang('Sprint')."</th>
 						<th>".lang('Actions')."</th>
 			                     </tr>
 			                  </thead>
@@ -50,8 +49,8 @@
 			                        echo    "<tr class=".$line.">
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_owner'][$i]."</td>
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_title'][$i]."</td>
-		                                  <td>".$this->listBacklogs->tasksElements['tasks_subtitle'][$i]."</td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_description'][$i]."</td>
+						  <td>".$this->listBacklogs->tasksElements['tasks_sprints'][$i]."</td>
 						  <td>
 							<img title='Editar' src='templates/default/images/edit.png'/>
 							<img title='Excluir' src='templates/default/images/delete.png'/>
