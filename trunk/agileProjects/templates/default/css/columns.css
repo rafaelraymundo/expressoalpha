@@ -59,8 +59,9 @@ ul.column li {
         font-size: 1.8em;
 }
 .block img {
-        width: 89%;
-        padding: 5%;
+//        width: 89%;
+	float: left;
+//        padding: 5%;
         margin: 0 auto;
         background:#fff;
         -ms-interpolation-mode: bicubic;

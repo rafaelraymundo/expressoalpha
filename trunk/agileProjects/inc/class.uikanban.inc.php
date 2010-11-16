@@ -103,7 +103,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                         <span class=\"task\">
                         <span class=\"msg_list\">
                                 <span class=\"title-bar\">
-                                        <span style=\"float:right;margin-left:2%;\">".$owner."</span>
+                                        <img height='15px' width='10px' src='templates/default/images/mark.png'><span style=\"float:right;margin-left:2%;\">".$owner."</span>
                                 </span>
                                 <B>".$tasks_title."</B>
                                 <button class=\"msg_head\">+</button>
