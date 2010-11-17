@@ -58,37 +58,41 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 					$sotasks->sotasksKanban('sprintBacklog');
 					for($i=0;$i<count($sotasks->tasksElements['tasks_id_owner']);$i++){
 						$tasks_id=$sotasks->tasksElements['tasks_id'][$i];
+						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
 						$tasks_title=$sotasks->tasksElements['tasks_title'][$i];
 						$tasks_description=$sotasks->tasksElements['tasks_description'][$i];
 						$tasks_estimate=$sotasks->tasksElements['tasks_estimate'][$i];
-						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                         		}
 				break;
 				case 'doing':
 					$sotasks->sotasksKanban('doing');
                                         for($i=0;$i<count($sotasks->tasksElements['tasks_id_owner']);$i++){
                                                 $tasks_id=$sotasks->tasksElements['tasks_id'][$i];
+						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                                         }					
 				break;
 				case 'tests':
 					$sotasks->sotasksKanban('tests');
                                         for($i=0;$i<count($sotasks->tasksElements['tasks_id_owner']);$i++){
                                                 $tasks_id=$sotasks->tasksElements['tasks_id'][$i];
+						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                                         }					
 				break;
 				case 'done':
 					$sotasks->sotasksKanban('done');
                                         for($i=0;$i<count($sotasks->tasksElements['tasks_id_owner']);$i++){
                                                 $tasks_id=$sotasks->tasksElements['tasks_id'][$i];
+						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
-						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_title,$tasks_description,$tasks_estimate);
+						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                                         }
 				break;
 			}
@@ -97,23 +101,29 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 		
 			return($col);
 		}
-		function task($owner='',$tasks_id,$tasks_title='',$tasks_description='',$tasks_estimate){
-		$task.="<div data-id=".$tasks_id." class=\"buble\" style=\"\">
-                    <div class=\"buble-content\">
-                        <span class=\"task\">
-                        <span class=\"msg_list\">
-                                <span class=\"title-bar\">
-                                        <img height='15px' width='10px' src='templates/default/images/mark.png'><span style=\"float:right;margin-left:2%;\">".$owner."</span>
-                                </span>
-                                <B>".$tasks_title."</B>
-                                <button class=\"msg_head\">+</button>
-                                <div class=\"msg_body\" style=\"background-color:#fbf9a5; display: none;\">".$tasks_description."</div>
-                                <span class=\"footer\"> Estimativa: ".$tasks_estimate." pontos</span>
-                        </span></span>
-                    </div>
-                </div>
-";	
-		return($task);
+		function task($owner='',$tasks_id,$tasks_priority,$tasks_title='',$tasks_description='',$tasks_estimate){
+			if($tasks_priority == 't'){
+				$tasks_priority ="mark_red";
+			}
+			else{
+				$tasks_priority="mark_green";
+			}
+			$task.="<div data-id=".$tasks_id." class=\"buble\" style=\"\">
+	                    <div class=\"buble-content\">
+	                        <span class=\"task\">
+	                        <span class=\"msg_list\">
+	                                <span class=\"title-bar\">
+	                                        <img height='15px' width='10px' src='templates/default/images/".$tasks_priority.".png'><span style=\"float:right;margin-left:2%;\">".$owner."</span>
+	                                </span>
+	                                <B>".$tasks_title."</B>
+	                                <button class=\"msg_head\">+</button>
+	                                <div class=\"msg_body\" style=\"background-color:#fbf9a5; display: none;\">".$tasks_description."</div>
+	                                <span class=\"footer\"> Estimativa: ".$tasks_estimate." pontos</span>
+        	                </span></span>
+                	    </div>
+	                </div>
+	";	
+			return($task);
 		}
         }
 ?>

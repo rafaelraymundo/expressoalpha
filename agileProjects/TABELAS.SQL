@@ -67,6 +67,7 @@ CREATE TABLE phpgw_agile_tasks(
 	tasks_estimate integer,
 	tasks_title varchar (255),
 	tasks_description varchar (255),
+	tasks_priority boolean DEFAULT false,
 	tasks_status varchar(20)
 );
 

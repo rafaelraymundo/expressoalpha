@@ -70,11 +70,12 @@ include_once('../header.inc.php');
 			//-------------------------SprintID encontrado---------------------------------
 
 			$this->tasks_info = $GLOBALS['phpgw']->db;
-			$this->tasks_info->query("SELECT tasks_id,tasks_id_owner,tasks_title,tasks_description,tasks_estimate from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='$idCol' AND tasks_id_sprints=$sprintsIdElements[0]",__LINE__,__FILE__);
+			$this->tasks_info->query("SELECT tasks_id, tasks_priority, tasks_id_owner,tasks_title,tasks_description,tasks_estimate from phpgw_agile_tasks WHERE tasks_id_proj=$projId AND tasks_status='$idCol' AND tasks_id_sprints=$sprintsIdElements[0]",__LINE__,__FILE__);
 			if($this->tasks_info->num_rows()){
 				$i=0;
 				while($this->tasks_info->next_record()){
 					$this->tasksElements['tasks_id'][$i] = $this->tasks_info->f('tasks_id');
+					$this->tasksElements['tasks_priority'][$i] = $this->tasks_info->f('tasks_priority');
 					$this->tasksElements['tasks_id_owner'][$i] = $this->tasks_info->f('tasks_id_owner');
 					$this->tasksElements['tasks_title'][$i] = $this->tasks_info->f('tasks_title');
 					$this->tasksElements['tasks_description'][$i] = $this->tasks_info->f('tasks_description');

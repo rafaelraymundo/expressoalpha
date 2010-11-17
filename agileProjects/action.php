@@ -74,6 +74,7 @@
 			include_once('inc/class.soinsertElement.inc.php');
 			$newTask = new soinsertElement();
 			$newTask->soinsertTask(	 $_POST['sprint'],
+						 $_POST['important'],
 						 $_POST['responsable'],
 						 $_POST['title'],
 						 $_POST['description'],
