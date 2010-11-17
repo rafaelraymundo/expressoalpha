@@ -43,7 +43,7 @@
 									<option value=\"0\" selected>Selecione um sprint</option>
 									".$sprints."
 								</select>
-				</td></tr>
+				<span class='important'><input type=\"checkbox\" id=\"important\" value=\"t\">&nbsp;&nbsp;Urgente</span></td></tr>
 		                <tr class='alt'><td>Responsavel: </td><td>
 		                                                <select name=\"menu\" id=\"responsable\">
 		                                                        <option value=\"0\" selected>Selecione um participante</option>
@@ -56,6 +56,7 @@
 			</table>
 			<button onclick=\"javascript:newTask(
 						document.getElementById('sprint').value,
+						document.getElementById('important').checked,
 						document.getElementById('responsable').value,
 						document.getElementById('title').value,
 						document.getElementById('description').value,
