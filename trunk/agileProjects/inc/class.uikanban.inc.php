@@ -72,6 +72,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
+						$tasks_estimate=$sotasks->tasksElements['tasks_estimate'][$i];
 						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                                         }					
 				break;
@@ -82,6 +83,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
+						$tasks_estimate=$sotasks->tasksElements['tasks_estimate'][$i];
 						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                                         }					
 				break;
@@ -92,6 +94,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 						$tasks_priority=$sotasks->tasksElements['tasks_priority'][$i];
                                                 $tasks_title=$sotasks->tasksElements['tasks_title'][$i];
                                                 $tasks_description=$sotasks->tasksElements['tasks_description'][$i];
+						$tasks_estimate=$sotasks->tasksElements['tasks_estimate'][$i];
 						$col.= $this->task($list->uidnumber2cn($sotasks->tasksElements['tasks_id_owner'][$i]),$tasks_id,$tasks_priority,$tasks_title,$tasks_description,$tasks_estimate);
                                         }
 				break;
