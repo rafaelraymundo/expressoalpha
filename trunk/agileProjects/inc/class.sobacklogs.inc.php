@@ -43,7 +43,7 @@
 
 			$this->tasks->query('SELECT tasks_id_owner, tasks_title, tasks_description, tasks_status, sprints_name 
 						FROM phpgw_agile_tasks, phpgw_agile_sprints 
-						WHERE sprints_id=tasks_id_sprints AND tasks_id_proj='.$projId.'
+						WHERE sprints_status=true AND sprints_id=tasks_id_sprints AND tasks_id_proj='.$projId.'
 						GROUP BY tasks_id_owner, tasks_title, tasks_description, tasks_status, sprints_name',__LINE__,__FILE__);
 
 			if($this->tasks->num_rows()){
