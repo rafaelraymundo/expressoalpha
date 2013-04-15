@@ -20,7 +20,17 @@
                 public function solists(){
 			include_once('../phpgwapi/inc/class.db.inc.php');
 			$this->result = $GLOBALS['phpgw']->db;
-			$this->result->query('SELECT * FROM phpgw_agile_projects',__LINE__,__FILE__);
+		
+			//Verifica se há na sessão uidNumber carregado. Caso positivo, obedece regra de visualização dos projetos que possui permissão.
+			if(isset($_SESSION['phpgw_info']['expresso']['user']['account_id'])){
+				$sql = "SELECT * FROM phpgw_agile_projects where proj_owner = '".$_SESSION['phpgw_info']['expresso']['user']['userid']."' or proj_id in " 
+				."(SELECT uprojects_id_project FROM phpgw_agile_users_projects where uprojects_id_user = '".$_SESSION['phpgw_info']['expresso']['user']['account_id']."') ";
+			}else{
+				$sql = 'SELECT * FROM phpgw_agile_projects';
+			}
+		
+		
+			$this->result->query($sql,__LINE__,__FILE__);
 			if($this->result->num_rows())
 			{
 				$i=0;
