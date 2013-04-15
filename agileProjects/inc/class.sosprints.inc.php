@@ -19,7 +19,7 @@
     
                 var $sprints;
                 var $sprintsElements;
-		var $sprintActive;
+				var $sprintActive;
     
 
                 function sosprintsList(){
@@ -28,27 +28,25 @@
 
                         $projId = $_SESSION['phpgw_info']['expresso']['agileProjects']['active'];
 
-                        $this->sprints_name = $GLOBALS['phpgw']->db;
-                        $this->sprints_goal = $GLOBALS['phpgw']->db;
-                        $this->sprints_dt_start = $GLOBALS['phpgw']->db;
-                        $this->sprints_dt_end = $GLOBALS['phpgw']->db;
-                        $this->sprints_retrospective = $GLOBALS['phpgw']->db;
 
                         $this->sprints = $GLOBALS['phpgw']->db;
                         $list = new ldap_functions();
 
-                        $this->sprints->query('SELECT * FROM phpgw_agile_sprints WHERE sprints_id_proj='.$projId.' ORDER BY sprints_status DESC',__LINE__,__FILE__);
+						$sql = "SELECT sprints_id,sprints_id_proj,sprints_name,sprints_goal,to_char(sprints_dt_start, 'DD/MM/YYYY') as sprints_start, to_char(sprints_dt_end, 'DD/MM/YYYY') as sprints_end ,sprints_retrospective,sprints_status ".
+						"FROM phpgw_agile_sprints WHERE sprints_id_proj=".$projId." ORDER BY sprints_status DESC, sprints_dt_start DESC ";
+
+						$this->sprints->query($sql,__LINE__,__FILE__);
                         if($this->sprints->num_rows()){
                                 $i=0;
                                 while($this->sprints->next_record())
                                 {
-					$this->sprintsElements['sprints_id'][$i] = $this->sprints->f('sprints_id');
+										$this->sprintsElements['sprints_id'][$i] = $this->sprints->f('sprints_id');
                                         $this->sprintsElements['sprints_name'][$i] = $this->sprints->f('sprints_name');
                                         $this->sprintsElements['sprints_goal'][$i] = $this->sprints->f('sprints_goal');
-                                        $this->sprintsElements['sprints_dt_start'][$i] = $this->sprints->f('sprints_dt_start');
-                                        $this->sprintsElements['sprints_dt_end'][$i] = $this->sprints->f('sprints_dt_end');
+										$this->sprintsElements['sprints_dt_start'][$i] = $this->sprints->f('sprints_start');
+										$this->sprintsElements['sprints_dt_end'][$i] = $this->sprints->f('sprints_end');
                                         $this->sprintsElements['sprints_retrospective'][$i] = $this->sprints->f('sprints_retrospective');
-					$this->sprintsElements['sprints_status'][$i] = $this->sprints->f('sprints_status');
+										$this->sprintsElements['sprints_status'][$i] = $this->sprints->f('sprints_status');
                                         $i++;
                                 }
                         }
