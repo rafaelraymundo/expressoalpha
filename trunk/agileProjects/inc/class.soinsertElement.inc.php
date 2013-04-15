@@ -26,9 +26,9 @@ include_once('../header.inc.php');
 			$adminArray = unserialize($adminArray);
 
 			$numPartic = count($particArray);
-                        $numAdmin = count($adminArray);
+            $numAdmin = count($adminArray);
 
-                        $this->insert_projects = $GLOBALS['phpgw']->db;
+            $this->insert_projects = $GLOBALS['phpgw']->db;
 			$this->insert_partic = $GLOBALS['phpgw']->db;
 			$this->insert_admin = $GLOBALS['phpgw']->db;
 
@@ -48,9 +48,13 @@ include_once('../header.inc.php');
                 public function soinsertSprint($name,$dt_start,$dt_end,$goal){
                         include_once('../phpgwapi/inc/class.db.inc.php');
                         $this->insert_sprint = $GLOBALS['phpgw']->db;
-
+						$dIni =    split ('[/.-]', $dt_start);
+						$dFim =    split ('[/.-]', $dt_end);
+		
+						$dIni = $dIni[2]."-".$dIni[1]."-".$dIni[0];
+						$dFim = $dFim[2]."-".$dFim[1]."-".$dFim[0];
                         //Insere o sprint
-                        $sprint_insert = $this->insert_sprint->query('INSERT INTO phpgw_agile_sprints(sprints_id_proj, sprints_name, sprints_dt_start, sprints_dt_end, sprints_goal) VALUES(\''.$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].'\',\''.$name.'\',\''.$dt_start.'\',\''.$dt_end.'\', \''.$goal.'\')',__LINE__,__FILE__);
+						$sprint_insert = $this->insert_sprint->query('INSERT INTO phpgw_agile_sprints(sprints_id_proj, sprints_name, sprints_dt_start, sprints_dt_end, sprints_goal) VALUES(\''.$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].'\',\''.$name.'\',\''.$dIni.'\',\''.$dFim.'\', \''.$goal.'\')',__LINE__,__FILE__);
                 }
 		
                 public function soinsertTask($sprint,$priority,$responsable,$title,$description,$estimate){
