@@ -24,7 +24,8 @@
 			$sprints = $this->sprints->sotaskInclude();
 			
 			for($i=0;$i<count($this->sprints->sprintsElements['sprints_name']);$i++){
-				$sprints.="<option value=\"".$this->sprints->sprintsIdElements['sprints_id'][$i]."\">".$this->sprints->sprintsElements['sprints_name'][$i]."</option>";
+				$selected = $this->sprints->sprintsIdElements['sprints_status'][$i]?" SELECTED ":"";
+				$sprints.="<option value=\"".$this->sprints->sprintsIdElements['sprints_id'][$i]."\" ".$selected." >".$this->sprints->sprintsElements['sprints_name'][$i]."</option>";
 
 			}
 

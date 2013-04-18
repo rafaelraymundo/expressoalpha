@@ -52,8 +52,8 @@ print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
 						  <td>".$this->listBacklogs->tasksElements['tasks_description'][$i]."</td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_sprints'][$i]."</td>
 						  <td>
-							<img title='Editar' src='templates/default/images/edit.png'/>
-							<img title='Excluir' src='templates/default/images/delete.png'/>
+							<!-- <img title='Editar' src='templates/default/images/edit.png'/> -->
+							<img onclick=\"removeTask('".$this->listBacklogs->tasksElements['tasks_title'][$i]."',".$this->listBacklogs->tasksElements['tasks_id'][$i].",'".$this->listBacklogs->tasksElements['project_owner']."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Excluir' src='templates/default/images/delete.png'/>
 						  </td>
 		                                </tr>";
 					if($line == "alt"){

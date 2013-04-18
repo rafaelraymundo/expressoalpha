@@ -16,7 +16,7 @@ include_once('../header.inc.php');
                 var $projRemove;
 
                 public function soremoveProject($projId){
-			$projId = addslashes($_POST['projId']);
+						$projId = addslashes($_POST['projId']);
 	
                         include_once('../phpgwapi/inc/class.db.inc.php');
     
@@ -24,5 +24,29 @@ include_once('../header.inc.php');
 
                         //Insere o projeto guardando seu ID
                         $this->projRemove->query("DELETE from phpgw_agile_projects where proj_id=$projId");
-		}
+				}
+				
+				
+        		public function soremoveSprint($sprintId){
+						$sprintId = addslashes($_POST['sprintId']);
+	
+                        include_once('../phpgwapi/inc/class.db.inc.php');
+    
+                        $this->projRemove = $GLOBALS['phpgw']->db;
+
+                        //Insere o projeto guardando seu ID
+                        $this->projRemove->query("DELETE from phpgw_agile_sprints where sprints_id=$sprintId");
+				}
+				
+        		public function soremoveTask($taskId){
+						$sprintId = addslashes($_POST['taskId']);
+	
+                        include_once('../phpgwapi/inc/class.db.inc.php');
+    
+                        $this->projRemove = $GLOBALS['phpgw']->db;
+
+                        //Insere o projeto guardando seu ID
+                        $this->projRemove->query("DELETE from phpgw_agile_tasks where tasks_id=$taskId");
+				}
+				
 	}

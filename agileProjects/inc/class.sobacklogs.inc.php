@@ -29,6 +29,7 @@
 			include_once('inc/class.ldap_functions.inc.php');
 
 			$projId = $_SESSION['phpgw_info']['expresso']['agileProjects']['active'];
+			
 
 			$this->tasks_id_sprints = $GLOBALS['phpgw']->db;
 			$this->tasks_owner = $GLOBALS['phpgw']->db;
@@ -40,16 +41,27 @@
 			$this->tasks = $GLOBALS['phpgw']->db;
 			$this->tasks_sprints = $GLOBALS['phpgw']->db;
 			$list = new ldap_functions();
+			
+			$this->owner = $GLOBALS['phpgw']->db;
+			$sql = "SELECT proj_owner FROM phpgw_agile_projects where proj_id = ".$projId;
+			$this->owner->query($sql,__LINE__,__FILE__);
+			if($this->owner->num_rows() > 0)
+			{
+				$this->owner->next_record();
+				$this->tasksElements['project_owner'] = $this->owner->f('proj_owner');
+			}
+			
 
-			$this->tasks->query('SELECT tasks_id_owner, tasks_title, tasks_description, tasks_status, sprints_name 
+			$this->tasks->query('SELECT tasks_id, tasks_id_owner, tasks_title, tasks_description, tasks_status, sprints_name 
 						FROM phpgw_agile_tasks, phpgw_agile_sprints 
 						WHERE sprints_status=true AND sprints_id=tasks_id_sprints AND tasks_id_proj='.$projId.'
-						GROUP BY tasks_id_owner, tasks_title, tasks_description, tasks_status, sprints_name',__LINE__,__FILE__);
+						GROUP BY tasks_id, tasks_id_owner, tasks_title, tasks_description, tasks_status, sprints_name',__LINE__,__FILE__);
 
 			if($this->tasks->num_rows()){
 				$i=0;
 				while($this->tasks->next_record())
-        	                {
+				{
+					$this->tasksElements['tasks_id'][$i] = $this->tasks->f('tasks_id');
 					$this->tasksElements['tasks_sprints'][$i] = $this->tasks->f('sprints_name');
 					$this->tasksElements['tasks_owner'][$i] = $list->uidnumber2cn($this->tasks->f('tasks_id_owner'));
 					$this->tasksElements['tasks_title'][$i] = $this->tasks->f('tasks_title');
