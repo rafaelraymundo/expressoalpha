@@ -51,8 +51,8 @@
 									".$user_id."
 		                                                </select>
 		                </td></tr>
-				<tr class=''><td>Titulo: </td><td><input type=\"text\" id=\"title\" size='40'></td></tr>
-				<tr class='alt'><td>Descricao: </td><td><textarea id=\"description\" cols=\"38\" rows=\"4\"></textarea></td></tr>
+				<tr class=''><td>Titulo: </td><td><input type=\"text\" maxlength=\"255\" id=\"title\" size='40'></td></tr>
+				<tr class='alt'><td>Descricao: </td><td><textarea id=\"description\" maxlength=\"255\" cols=\"38\" rows=\"4\"></textarea></td></tr>
 				<tr class=''><td>Estimativa: </td><td><input type=\"text\" id=\"estimate\" size='20'> pontos</td></tr>
 			</table>
 			<button onclick=\"javascript:newTask(

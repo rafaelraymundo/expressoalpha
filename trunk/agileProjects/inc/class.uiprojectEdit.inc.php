@@ -46,8 +46,8 @@
 
 	<div align=\"center\">
 	<table id='customers' border=2>
-	        <tr class='alt'><td width=\"47%\"><b>Nome do Projeto:</b> <input type=\"text\" id=\"name\" value=\"".$this->editElement->resultNameDesc."\"size='40'></td><td></td><td></td></tr>
-		<tr class=''><td><b>Descricao:</b><br/><textarea id=\"description\" cols=\"52\" rows=\"5\">".$this->editElement->resultProjDesc."</textarea></td><td></td><td></td></tr>
+	        <tr class='alt'><td width=\"47%\"><b>Nome do Projeto:</b> <input type=\"text\" id=\"name\" maxlength=\"100\" value=\"".$this->editElement->resultNameDesc."\"size='40'></td><td></td><td></td></tr>
+		<tr class=''><td><b>Descricao:</b><br/><textarea id=\"description\" cols=\"52\" maxlength=\"255\" rows=\"5\">".$this->editElement->resultProjDesc."</textarea></td><td></td><td></td></tr>
 		<tr class='alt'><td width=\"45%\"><br><br><br><b>Participantes do projeto</b><br/><select size=\"13\" style=\"width: 450px;\" name=\"participants[]\" id=\"user_list\">\"".$part."\"</select></td>
 		<td width=\"10px\" valign=\"middle\" align=\"center\">
 		
@@ -68,7 +68,7 @@
 	        <td width=\"30px\" valign=\"middle\" align=\"center\">
 
 		<button onclick=\"javascript:add_user('user_list2','user_list_in2');\" type=\"button\"><img style=\"vertical-align: middle;\" src=\"templates/default/images/add.png\"/> Adicionar</button><br/><br/>
-                <button onclick=\"javascript:remove_user('user_list2');\" type=\"button\"><img style=\"vertical-align: middle;\" src=\"templates/default/images/rem.png\"/> Remover</button>
+                <button onclick=\"javascript:remove_user('user_list2','');\" type=\"button\"><img style=\"vertical-align: middle;\" src=\"templates/default/images/rem.png\"/> Remover</button>
 		</td>
 
 	        <td valign=\"bottom\">        

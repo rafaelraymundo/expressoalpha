@@ -5,10 +5,10 @@
 
 	<div align=\"center\">
         <table id='customers' border=2>
-		<tr class=''><td>Nome do sprint: </td><td><input type=\"text\" id=\"name\" size='40'></td></tr>
+		<tr class=''><td>Nome do sprint: </td><td><input type=\"text\"  maxlength=\"100\" id=\"name\" size='40'></td></tr>
 		<tr class='alt'><td>Data inicial: </td><td><input OnKeyUp=\"mascara_data(this)\" type=\"text\" id=\"dt_start\" size='40'></td></tr>
 		<tr class=''><td>Data final: </td><td><input OnKeyUp=\"mascara_data(this)\" type=\"text\" id=\"dt_end\" size='40'></td></tr>
-		<tr class='alt'><td>Meta: </td><td><textarea id=\"goal\" cols=\"38\" rows=\"4\"></textarea></td></tr>
+		<tr class='alt'><td>Meta: </td><td><textarea maxlength=\"255\" id=\"goal\" cols=\"38\" rows=\"4\"></textarea></td></tr>
 <!--		<tr class=''><td>Retrospectiva: </td><td><textarea id=\"retrospective\" cols=\"38\" rows=\"4\"></textarea></td></tr> -->
 		
 	</table>
