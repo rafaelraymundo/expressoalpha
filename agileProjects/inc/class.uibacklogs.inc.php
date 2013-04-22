@@ -31,6 +31,7 @@ print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
 				$numBacklogs = count($this->listBacklogs->tasksElements['tasks_owner']);
 			        echo    "<div><button type=\"button\" onClick=\"javascript:taskInclude();\">[ ".lang('Include task')." ]</button><br/><br/>";
 				if (count($this->listBacklogs->tasksElements) > 0 ){
+					
 				   echo "
 			        	<table id=\"customers\">
 			                  <thead>
@@ -39,21 +40,27 @@ print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
 			                        <th>".lang('Title')."</th>
 			                        <th>".lang('Description')."</th>
 						<th>".lang('Sprint')."</th>
+						<th>Status</th>
 						<th>".lang('Actions')."</th>
 			                     </tr>
 			                  </thead>
 			                  <tbody>";
 				}
 		                for($i=0;$i<$numBacklogs;$i++){
+		                	if($this->listBacklogs->tasksElements['tasks_status'][$i]=="sprintBacklog")$status = "Planejada";
+		                	if($this->listBacklogs->tasksElements['tasks_status'][$i]=="tests")$status = "Teste";
+		                	if($this->listBacklogs->tasksElements['tasks_status'][$i]=="doing")$status = "Execução";
+		                	if($this->listBacklogs->tasksElements['tasks_status'][$i]=="done")$status = "Pronta";
 
 			                        echo    "<tr class=".$line.">
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_owner'][$i]."</td>
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_title'][$i]."</td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_description'][$i]."</td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_sprints'][$i]."</td>
+						  <td>".$status."</td>
 						  <td>
 							<!-- <img title='Editar' src='templates/default/images/edit.png'/> -->
-							<img onclick=\"removeTask('".$this->listBacklogs->tasksElements['tasks_title'][$i]."',".$this->listBacklogs->tasksElements['tasks_id'][$i].",'".$this->listBacklogs->tasksElements['project_owner']."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Excluir' src='templates/default/images/delete.png'/>
+							<img onclick=\"removeTask('".$this->listBacklogs->tasksElements['tasks_title'][$i]."',".$this->listBacklogs->tasksElements['tasks_id'][$i].",'".$this->listBacklogs->tasksElements['project_owner']."','".$_SESSION['phpgw_info']['expresso']['user']['account_id']."');\" title='Excluir' src='templates/default/images/delete.png'/>
 						  </td>
 		                                </tr>";
 					if($line == "alt"){

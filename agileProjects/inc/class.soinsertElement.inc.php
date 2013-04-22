@@ -55,8 +55,58 @@ class soinsertElement{
 		$name = utf8_decode($name);
 		$goal = utf8_decode($goal);
 
+		
+		$errors = false;
+		
 		$dIni =    split ('[/.-]', $dt_start);
 		$dFim =    split ('[/.-]', $dt_end);
+		
+		if(trim($name)==""){
+			echo "- Nome do Sprint deve ser informado\n";
+			$errors = true;
+		}
+		
+		
+		
+		if(trim($dt_start)==""){
+			echo "- Data inicial deve ser informada\n";
+			$errors = true;
+		}
+		
+		if(trim($dt_start)!=""&&(count($dIni)<3||!checkdate($dIni[1], $dIni[0], $dIni[2]))){
+			echo "- Data inicial inválida\n";
+			$errors = true;
+		}
+		
+		if(trim($dt_end)==""){
+			echo "- Data final deve ser informada\n";
+			$errors = true;
+		}
+		
+		if(trim($dt_end)!=""&&(count($dFim)<3||!checkdate($dFim[1], $dFim[0], $dFim[2]))){
+			echo "- Data final inválida\n";
+			$errors = true;
+		}
+		
+		if(trim($goal)==""){
+			echo "- Meta do Sprint deve ser informado\n";
+			$errors = true;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if($errors){
+			return;
+		}
 		
 		$dIni = $dIni[2]."-".$dIni[1]."-".$dIni[0];
 		$dFim = $dFim[2]."-".$dFim[1]."-".$dFim[0];
@@ -76,6 +126,32 @@ class soinsertElement{
 		}
 		else{
 			$priority = 't';
+		}
+		
+		$error = false;
+		
+		if($sprint==""||$sprint==0){
+			echo "- A Tarefa deve ser associada a um Sprint\n";
+			$error = true;
+		}
+		
+		if(trim($title)==""){
+			echo "- O Título da tarefa é obrigatório\n";
+			$error = true;
+		}
+		
+		if(trim($estimate)==""){
+			echo "- Estimativa deve ser informada\n";
+			$error = true;
+		}else{
+			if(!is_numeric($estimate)){
+				echo "- Estimativa deve ser númerica\n";
+				$error = true;
+			}
+		}
+		
+		if($error){
+			return;
 		}
 
 		$this->insert_task = $GLOBALS['phpgw']->db;

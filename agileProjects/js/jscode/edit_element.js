@@ -155,8 +155,8 @@
 	
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-				alert("Projeto criado com sucesso");
-				dataRequest('tabs-1');
+					alert("Projeto criado com sucesso");
+					dataRequest('tabs-1');
 			}
 		}
 		http.send(params);
@@ -176,8 +176,12 @@
 	
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-				alert("Sprint criado com sucesso");
-				dataRequest('tabs-3');
+				if(http.responseText!=""){
+					alert(http.responseText);
+				}else{
+					alert("Sprint criado com sucesso");
+					dataRequest('tabs-3');
+				}
 			}
 		}
 		http.send(params);
@@ -197,8 +201,13 @@
 	
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-				alert("Tarefa criada com sucesso");
-				dataRequest('tabs-2');
+				if(http.responseText!=""){
+					alert(http.responseText);
+				}else{
+					alert("Tarefa criada com sucesso");
+					dataRequest('tabs-2');
+				}
+				
 			}
 		}
 		http.send(params);
@@ -263,61 +272,61 @@
 	
 	
 	
-	function removeSprint(sprintName, sprintId, projOwner,userLog){
-		if(projOwner != userLog){
-			alert("Voce nao tem permissao para excluir esse Sprint.");
-		}
-		else{
-			var answer = confirm("Tem certeza que deseja excluir o sprint ["+sprintName+"] ?");
-			if (answer){
-				http = new XMLHttpRequest();
-				var url = "action.php";
-				var params = "type=removeSprint&sprintId="+sprintId;
-				http.open("POST",url,true);
-	
-				//Send the proper header information along with the request
-				http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				http.setRequestHeader("Content-length", params.length);
-				http.setRequestHeader("Connection", "close");
-	
-				http.onreadystatechange = function() {//Call a function when the state changes.
-					if(http.readyState == 4 && http.status == 200) {
+	function removeSprint(sprintName, sprintId, userLog){
+
+		var answer = confirm("Tem certeza que deseja excluir o sprint ["+sprintName+"] ?");
+		if (answer){
+			http = new XMLHttpRequest();
+			var url = "action.php";
+			var params = "type=removeSprint&sprintId="+sprintId+"&id_usr="+userLog;
+			http.open("POST",url,true);
+
+			//Send the proper header information along with the request
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.setRequestHeader("Content-length", params.length);
+			http.setRequestHeader("Connection", "close");
+
+			http.onreadystatechange = function() {//Call a function when the state changes.
+				if(http.readyState == 4 && http.status == 200) {
+					if(http.responseText=="0"){
+						alert("Voce nao tem permissão para excluir esta Sprint.");
+					}else{
 						alert("Sprint excluido com sucesso");
 						dataRequest('tabs-3');
 					}
 				}
-				http.send(params);
 			}
+			http.send(params);
+
 		}
 	}
 	
 	
 	
 	function removeTask(taskName, taskId, projOwner,userLog){
-		if(projOwner != userLog){
-			alert("Voce nao tem permissao para excluir esta Tarefa.");
-		}
-		else{
-			var answer = confirm("Tem certeza que deseja excluir a Tarefa ["+taskName+"] ?");
-			if (answer){
-				http = new XMLHttpRequest();
-				var url = "action.php";
-				var params = "type=removeTask&taskId="+taskId;
-				http.open("POST",url,true);
-	
-				//Send the proper header information along with the request
-				http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				http.setRequestHeader("Content-length", params.length);
-				http.setRequestHeader("Connection", "close");
-	
-				http.onreadystatechange = function() {//Call a function when the state changes.
-					if(http.readyState == 4 && http.status == 200) {
+		var answer = confirm("Tem certeza que deseja excluir a Tarefa ["+taskName+"] ?");
+		if (answer){
+			http = new XMLHttpRequest();
+			var url = "action.php";
+			var params = "type=removeTask&taskId="+taskId+"&id_usr="+userLog;;
+			http.open("POST",url,true);
+
+			//Send the proper header information along with the request
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.setRequestHeader("Content-length", params.length);
+			http.setRequestHeader("Connection", "close");
+
+			http.onreadystatechange = function() {//Call a function when the state changes.
+				if(http.readyState == 4 && http.status == 200) {
+					if(http.responseText=="0"){
+						alert("Voce nao tem permissão para excluir esta Sprint.");
+					}else{
 						alert("Task excluido com sucesso");
 						dataRequest('tabs-2');
 					}
 				}
-				http.send(params);
 			}
+			http.send(params);
 		}
 	}
 	

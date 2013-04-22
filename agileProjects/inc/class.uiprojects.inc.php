@@ -19,6 +19,11 @@
 
 		public function uiprojects(){
 			//Novo objeto, classe solists
+			
+			include_once('inc/class.ldap_functions.inc.php');
+			
+			$list = new ldap_functions();
+			
 			$this->listProjects = new solists();
 			$num = count($this->listProjects->db);
 	
@@ -52,9 +57,11 @@
 				$unsel = '';
 			}
 		
+			$user = $list->uid2cn($this->listProjects->db[$i][1]);
+			
 	 		echo	"<tr class=".$line.">
-				  <td>".$sel.$this->listProjects->db[$i][$j].$unsel."</td>
-	                          <td>".$sel.$this->listProjects->db[$i][++$j].$unsel."</td>
+				  <td>".$sel.$this->listProjects->db[$i][$j++].$unsel."</td>
+	                          <td>".$sel.$user.$unsel."</td>
         	                  <td>".$sel.$this->listProjects->db[$i][++$j].$unsel."</td>
                 	          <td>
 				";
@@ -84,5 +91,13 @@
 		}//Fim da listagem
 	echo "</tbody></table>";
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 ?>

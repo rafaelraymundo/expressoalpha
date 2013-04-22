@@ -383,7 +383,7 @@ $users_filter="(&(phpgwAccountType=u)(cn=*$filtro*))";
 
 
 
-
+	//Metodo busca usuarios agile
 	function search_users_only($params)
 	{
 
@@ -1197,6 +1197,15 @@ $users_filter="(&(phpgwAccountType=u)(cn=*$filtro*))";
         {
                 $justthese = array("cn");
                 $filter="(&(|(phpgwAccountType=u)(phpgwAccountType=l))(uidNumber=".$uidnumber."))";
+                $search = ldap_search($this->ldap, $GLOBALS['phpgw_info']['server']['ldap_context'], $filter, $justthese);
+                $entry = ldap_get_entries($this->ldap, $search);
+                return $entry[0]['cn'][0];
+        }
+        
+	function uid2cn($uidnumber)
+        {
+                $justthese = array("cn");
+                $filter="(&(|(phpgwAccountType=u)(phpgwAccountType=l))(uid=".$uidnumber."))";
                 $search = ldap_search($this->ldap, $GLOBALS['phpgw_info']['server']['ldap_context'], $filter, $justthese);
                 $entry = ldap_get_entries($this->ldap, $search);
                 return $entry[0]['cn'][0];

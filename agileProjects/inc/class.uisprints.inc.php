@@ -63,7 +63,7 @@ class uisprints{
                                                   <td>
 							<img onclick=\"activeSprint(".$this->listSprints->sprintsElements['sprints_id'][$i].");\" title='Abrir' src='templates/default/images/open.png'/>
 							<!-- <img title='Editar' src='templates/default/images/edit.png'/> -->
-							<img onclick=\"removeSprint('".$this->listSprints->sprintsElements['sprints_name'][$i]."',".$this->listSprints->sprintsElements['sprints_id'][$i].",'".$this->listSprints->sprintsElements['project_owner']."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Excluir' src='templates/default/images/delete.png'/>
+							<img onclick=\"removeSprint('".$this->listSprints->sprintsElements['sprints_name'][$i]."',".$this->listSprints->sprintsElements['sprints_id'][$i].",'".$_SESSION['phpgw_info']['expresso']['user']['account_id']."');\" title='Excluir' src='templates/default/images/delete.png'/>
 						  </td>
                                                 </tr>";
 				if($line == "alt"){
