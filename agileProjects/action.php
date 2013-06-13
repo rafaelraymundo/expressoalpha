@@ -80,7 +80,7 @@ if($_GET['type'] == 'activeSprint'){
 }
 if($_GET['type'] == 'taskInclude'){
 	include_once('inc/class.uitaskInclude.inc.php');
-	$taskInclude = new uitaskInclude();
+	$taskInclude = new uitaskInclude($_GET['idTask']);
 }
 if($_POST['type'] == 'newTask'){
 	include_once('inc/class.soinsertElement.inc.php');
@@ -90,7 +90,8 @@ if($_POST['type'] == 'newTask'){
 	$_POST['responsable'],
 	$_POST['title'],
 	$_POST['description'],
-	$_POST['estimate']);
+	$_POST['estimate'],
+	$_POST['taskId']);
 }
 if($_POST['type'] == 'newSprint'){
 	include_once('inc/class.soinsertElement.inc.php');

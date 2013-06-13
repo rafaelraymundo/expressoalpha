@@ -23,12 +23,14 @@ require_once '../header.session.inc.php';
  		list($app,$class,$method) = explode('.',@$_POST['_action']);
  		$cExecuteFormReturn = true;
  	}
- 	//	Explode action from cExecute function
+ 		//	Explode action from cExecute function
  	else if($_GET['action'])
 		list($app,$class,$method) = explode('.',@$_GET['action']);
 	// NO ACTION
 	else
 		return $_SESSION['response'] = 'Post-Content-Length';
+		
+	
 	
 	// Load dinamically class file.
 	if($app == '$this')
@@ -65,9 +67,16 @@ require_once '../header.session.inc.php';
 		
 	// Return result serialized.	
 	
+		
+	if(isset($_GET['noexecute'])){
+ 		echo $result;
+ 		return;
+ 	}
 
-	if(!$cExecuteFormReturn)
+	if(!$cExecuteFormReturn){
 		echo serialize($result);
-	else
+	}
+	else{
 		$_SESSION['response'] = $result;
+	}
 ?>

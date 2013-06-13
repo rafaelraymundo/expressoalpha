@@ -40,7 +40,7 @@ class sosaveElement{
 		$delete = $this->delOldies->query('DELETE from phpgw_agile_users_projects WHERE uprojects_id_project=\''.$projId.'\'',__LINE__,__FILE__);
 
 		//Realizando UPDATE da table phpgw_agile_projects
-		$update_projects = $this->save_projects->query('UPDATE phpgw_agile_projects SET proj_name = \''.$name.'\', proj_description = \''.$description.'\' WHERE proj_id=\''.$projId.'\'',__LINE__,__FILE__);
+		$update_projects = $this->save_projects->query('UPDATE phpgw_agile_projects SET proj_name = \''.$this->save_projects->db_addslashes($name).'\', proj_description = \''.$this->save_projects->db_addslashes($description).'\' WHERE proj_id=\''.$projId.'\'',__LINE__,__FILE__);
 			
 		//Insere os usuarios participantes e posteriormente os administradores
 		for($i=0;$i<$numPartic;$i++){

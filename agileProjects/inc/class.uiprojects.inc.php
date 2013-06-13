@@ -49,40 +49,44 @@
 		</thead>
 		<tbody>";
 		for($i=0;$i<$num;$i++){
-		    for($j=0;$j<2;$j++){
-			$sel='<B>';
-			$unsel='</B>';		
-			if($_SESSION['phpgw_info']['expresso']['agileProjects']['active'] != $this->listProjects->projId[$i][$j]){
-				$sel = '';
-				$unsel = '';
-			}
-		
-			$user = $list->uid2cn($this->listProjects->db[$i][1]);
 			
-	 		echo	"<tr class=".$line.">
-				  <td>".$sel.$this->listProjects->db[$i][$j++].$unsel."</td>
-	                          <td>".$sel.$user.$unsel."</td>
-        	                  <td>".$sel.$this->listProjects->db[$i][++$j].$unsel."</td>
-                	          <td>
-				";
-
-				$projName = $this->listProjects->db[$i][2-$j];
-				$projId = $this->listProjects->projId[$i][2-$j];
-				$projOwner = $this->listProjects->db[$i][--$j];
-
+				
+	
+				$user = $list->uid2cn($this->listProjects->db[$i][1]);
+				$projName = $this->listProjects->db[$i][0];
+				$projId = $this->listProjects->projId[$i][0];
+				$projOwner = $this->listProjects->db[$i][1];
+				$descricao = $this->listProjects->db[$i][2];
+				
+				
+				$sel='<B>';
+				$unsel='</B>';
+				if($_SESSION['phpgw_info']['expresso']['agileProjects']['active'] != $projId){
+					$sel = '';
+					$unsel = '';
+				}
+					
+				echo	"<tr class=".$line.">
+					  <td><a href=\"javascript:activeProject('".addslashes($projName)."','".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\">".$sel.$projName.$unsel."</a></td>
+		                          <td>".$sel.$user.$unsel."</td>
+	        	                  <td>".$sel.$descricao.$unsel."</td>
+	                	          <td>
+					";
+	
+				
+	
 				if($_SESSION['phpgw_info']['expresso']['agileProjects']['active'] == $projId){
-					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projName."','".$projId."','".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open_now.png'/>";
+					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".addslashes($projName)."','".$projId."','".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open_now.png'/>";
 				}
 				else{
-					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".$projName."','".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open.png'/>";
+					$projActive = "<img id=\"active_project".$projId."\" onclick=\"javascript:activeProject('".addslashes($projName)."','".$projId."', '".$_SESSION['phpgw_info']['expresso']['agileProjects']['active']."');\" title='Abrir' src='templates/default/images/open.png'/>";
 				}
-			echo	"
-					".$projActive."
-					<img onclick=\"editProject(".$projId.",'".$projOwner."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Editar' src='templates/default/images/edit.png'/> 
-					<img onclick=\"removeProject('".$projName."',".$projId.",'".$projOwner."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Excluir' src='templates/default/images/delete.png'/>
-				  </td>
-				</tr>";
-			}
+				echo	$projActive."
+						<img onclick=\"editProject(".$projId.",'".$projOwner."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Editar' src='templates/default/images/edit.png'/> 
+						<img onclick=\"removeProject('".addslashes($projName)."',".$projId.",'".$projOwner."','".$_SESSION['phpgw_info']['expresso']['user']['userid']."');\" title='Excluir' src='templates/default/images/delete.png'/>
+					  </td>
+					</tr>";
+			
 			if($line == "alt"){
 				$line="";
 			}else{

@@ -55,7 +55,7 @@ class uisprints{
 				}
 
 				echo    "<tr class=".$line.">
-                                                  <td>".$sel.$this->listSprints->sprintsElements['sprints_name'][$i].$unsel."</td>
+                                                  <td>".$sel."<a href=\"javascript:activeSprint(".$this->listSprints->sprintsElements['sprints_id'][$i].");\">".$this->listSprints->sprintsElements['sprints_name'][$i]."</a>".$unsel."</td>
                                                   <td>".$sel.$this->listSprints->sprintsElements['sprints_goal'][$i].$unsel."</td>
                                                   <td>".$sel.$this->listSprints->sprintsElements['sprints_dt_start'][$i].$unsel."</td>
                                                   <td>".$sel.$this->listSprints->sprintsElements['sprints_dt_end'][$i].$unsel."</td>
