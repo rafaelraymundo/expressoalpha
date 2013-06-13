@@ -34,14 +34,14 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                         print_r($_SESSION['phpgw_info']['expresso']['agileProjects']['projectName']);
                         echo ("</div>");
 
-			echo "	<div class=\"container\">
-				<ul class=\"column\" style=\"width:1213px;\">";
+			echo "	<div class=\"container\" style=\"margin:0 auto;\">
+				<ul class=\"column\" id=\"container-task\">";
 			$col .= $this->columns("Planejadas","sprintBacklog");
 			$col .= $this->columns("Em execu&ccedil;&atilde;o","doing");
 			$col .= $this->columns("Testes","tests");
 			$col .= $this->columns("Prontas","done");
 			
-			echo $col."</ul></div>";
+			echo $col.'</ul><div style="clear:both"></div></div>';
 		}
 		
 		function columns($colName,$idCol){
@@ -49,10 +49,10 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
 			$sotasks = new sotasks();
 			$list = new ldap_functions();
 
-			$col.= "<li style=\"width:303px\">";
-			$col.= "<div class=\"block_title\">";
-			$col.= "<h2>".$colName."</h2>";
-			$col.= "<div id=\"$idCol\" class=\"block connectedSortable\">";
+			$col.= '<li class="box-task">';
+			$col.= '<div class="block_title">';
+			$col.= '<h2>'.$colName.'</h2>';
+			$col.= '<div id="'.$idCol.'" class="block connectedSortable">';
 			switch($idCol){
 				case 'sprintBacklog':
 					$sotasks->sotasksKanban('sprintBacklog');
@@ -99,9 +99,7 @@ $GLOBALS['phpgw_info']['flags']['currentapp'] = 'agileProjects';
                                         }
 				break;
 			}
-			$col.=	"</div>";
-			$col.= "</li>";
-		
+			$col.= '</div></div></li>';	
 			return($col);
 		}
 		function task($owner='',$tasks_id,$tasks_priority,$tasks_title='',$tasks_description='',$tasks_estimate){

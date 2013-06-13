@@ -92,5 +92,26 @@ class sotasks{
 		$this->update_bubble = $GLOBALS['phpgw']->db;
 		$this->update_bubble->query("UPDATE phpgw_agile_tasks SET tasks_status = '$tasks_status' WHERE tasks_id = $tasks_id",__LINE__,__FILE__);
 	}
+	
+	function getTask($tasks_id){
+			include_once('../phpgwapi/inc/class.db.inc.php');
+			$this->task = $GLOBALS['phpgw']->db;
+			$sql = "SELECT * FROM phpgw_agile_tasks where tasks_id = ".$tasks_id;
+			$this->task->query($sql,__LINE__,__FILE__);
+			if($this->task->num_rows() > 0)
+			{
+				$this->task->next_record();
+				$this->tasksElements['tasks_id'] = $this->task->f('tasks_id');
+				$this->tasksElements['tasks_id_sprints'] = $this->task->f('tasks_id_sprints');
+				$this->tasksElements['tasks_id_proj'] = $this->task->f('tasks_id_proj');
+				$this->tasksElements['tasks_id_owner'] = $this->task->f('tasks_id_owner');
+				$this->tasksElements['tasks_estimate'] = $this->task->f('tasks_estimate');
+				$this->tasksElements['tasks_title'] = $this->task->f('tasks_title');
+				$this->tasksElements['tasks_description'] = $this->task->f('tasks_description');
+				$this->tasksElements['tasks_priority'] = $this->task->f('tasks_priority');
+				
+				
+			}
+		}
 }
 ?>

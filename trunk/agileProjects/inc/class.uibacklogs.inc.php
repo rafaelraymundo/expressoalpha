@@ -27,7 +27,7 @@
         	                echo ("</div>");
 				$this->listBacklogs = new sobacklogs();
 				$this->listBacklogs->sobacklogs();
-print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
+				print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
 				$numBacklogs = count($this->listBacklogs->tasksElements['tasks_owner']);
 			        echo    "<div><button type=\"button\" onClick=\"javascript:taskInclude();\">[ ".lang('Include task')." ]</button><br/><br/>";
 				if (count($this->listBacklogs->tasksElements) > 0 ){
@@ -54,12 +54,12 @@ print_r($this->listBacklogs->tasksSprints['tasks_sprints']);
 
 			                        echo    "<tr class=".$line.">
 		                                  <td>".$this->listBacklogs->tasksElements['tasks_owner'][$i]."</td>
-		                                  <td>".$this->listBacklogs->tasksElements['tasks_title'][$i]."</td>
+		                                  <td><a href='javascript:taskInclude(".$this->listBacklogs->tasksElements['tasks_id'][$i].");'>".$this->listBacklogs->tasksElements['tasks_title'][$i]."</a></td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_description'][$i]."</td>
 						  <td>".$this->listBacklogs->tasksElements['tasks_sprints'][$i]."</td>
 						  <td>".$status."</td>
 						  <td>
-							<!-- <img title='Editar' src='templates/default/images/edit.png'/> -->
+							<img title='Editar'  onclick=\"javascript:taskInclude(".$this->listBacklogs->tasksElements['tasks_id'][$i].");\"  src='templates/default/images/edit.png'/>
 							<img onclick=\"removeTask('".$this->listBacklogs->tasksElements['tasks_title'][$i]."',".$this->listBacklogs->tasksElements['tasks_id'][$i].",'".$this->listBacklogs->tasksElements['project_owner']."','".$_SESSION['phpgw_info']['expresso']['user']['account_id']."');\" title='Excluir' src='templates/default/images/delete.png'/>
 						  </td>
 		                                </tr>";

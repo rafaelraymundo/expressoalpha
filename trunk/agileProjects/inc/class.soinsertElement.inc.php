@@ -36,7 +36,8 @@ class soinsertElement{
 		$this->insert_admin = $GLOBALS['phpgw']->db;
 
 		//Insere o projeto guardando seu ID
-		$proj_id = $this->insert_projects->query('INSERT INTO phpgw_agile_projects(proj_name,proj_description,proj_owner) VALUES(\''.$name.'\',\''.$description.'\',\''.$_SESSION['phpgw_info']['expresso']['user']['userid'].'\') RETURNING proj_id',__LINE__,__FILE__);
+		
+		$proj_id = $this->insert_projects->query('INSERT INTO phpgw_agile_projects(proj_name,proj_description,proj_owner) VALUES(\''.$this->insert_projects->db_addslashes($name).'\',\''.$this->insert_projects->db_addslashes($description).'\',\''.$_SESSION['phpgw_info']['expresso']['user']['userid'].'\') RETURNING proj_id',__LINE__,__FILE__);
 		$proj_id=substr($proj_id, 7);
 			
 		//Insere os usuarios participantes e posteriormente os administradores
@@ -114,10 +115,10 @@ class soinsertElement{
 		
 		
 		//Insere o sprint
-		$sprint_insert = $this->insert_sprint->query('INSERT INTO phpgw_agile_sprints(sprints_id_proj, sprints_name, sprints_dt_start, sprints_dt_end, sprints_goal) VALUES(\''.$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].'\',\''.$name.'\',\''.$dIni.'\',\''.$dFim.'\', \''.$goal.'\')',__LINE__,__FILE__);
+		$sprint_insert = $this->insert_sprint->query('INSERT INTO phpgw_agile_sprints(sprints_id_proj, sprints_name, sprints_dt_start, sprints_dt_end, sprints_goal) VALUES(\''.$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].'\',\''.$this->insert_sprint->db_addslashes($name).'\',\''.$dIni.'\',\''.$dFim.'\', \''.$this->insert_sprint->db_addslashes($goal).'\')',__LINE__,__FILE__);
 	}
 
-	public function soinsertTask($sprint,$priority,$responsable,$title,$description,$estimate){
+	public function soinsertTask($sprint,$priority,$responsable,$title,$description,$estimate,$taskId){
 		//system("echo $sprint >/tmp/control.txt");
 		include_once('../phpgwapi/inc/class.db.inc.php');
 		 
@@ -158,9 +159,12 @@ class soinsertElement{
 		
 		$title = utf8_decode($title);
 		$description = utf8_decode($description);
-
-		//Insere a tarefa
-		$task_insert = $this->insert_task->query('INSERT INTO phpgw_agile_tasks(tasks_id_sprints,tasks_priority, tasks_id_proj, tasks_id_owner, tasks_title, tasks_description, tasks_status, tasks_estimate) VALUES('.$sprint.',\''.$priority.'\','.$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].','.$responsable.',\''.$title.'\',\''.$description.'\',\'sprintBacklog\','.$estimate.');',__LINE__,__FILE__);
+		if($taskId==0){
+			//Insere a tarefa
+			$task_insert = $this->insert_task->query('INSERT INTO phpgw_agile_tasks(tasks_id_sprints,tasks_priority, tasks_id_proj, tasks_id_owner, tasks_title, tasks_description, tasks_status, tasks_estimate) VALUES('.$sprint.',\''.$priority.'\','.$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].','.$responsable.',\''.$this->insert_task->db_addslashes($title).'\',\''.$this->insert_task->db_addslashes($description).'\',\'sprintBacklog\','.$estimate.');',__LINE__,__FILE__);
+		}else{
+			$task_insert = $this->insert_task->query("UPDATE phpgw_agile_tasks SET tasks_id_sprints='".$sprint."',tasks_priority='".$priority."', tasks_id_proj=".$_SESSION['phpgw_info']['expresso']['agileProjects']['active'].", tasks_id_owner =".$responsable.", tasks_title='".$this->insert_task->db_addslashes($title)."', tasks_description='".$this->insert_task->db_addslashes($description)."', tasks_estimate=".$estimate." WHERE tasks_id=".$taskId.";",__LINE__,__FILE__);	
+		}
 	}
 }
 ?>

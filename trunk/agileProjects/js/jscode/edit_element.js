@@ -50,8 +50,9 @@
 			if(is_firefox_0)
 				fixBugInnerSelect(select_users,'###' + new_options + select_users.innerHTML);
 			else
-				select_users.innerHTML = '###' + new_options + select_users.innerHTML;
-			select_users.outerHTML = select_users.outerHTML;
+				$('#'+select_users.id).html('###' + new_options + select_users.innerHTML);
+			
+			//select_users.outerHTML = select_users.outerHTML;
 		}
 	}
 	//-----------------------Fim include/remove users-----------------------------------
@@ -188,10 +189,10 @@
 	}
 	//-----------------------Fim Cria Sprint--------------------------------------------
 	//----------------------Cria Tarefa-------------------------------------------------
-	function newTask(sprint,important, responsable,title,description,estimate){
+	function newTask(sprint,important, responsable,title,description,estimate,taskid){
 		http = new XMLHttpRequest();
 		var url = "action.php";
-		var params = "type=newTask&sprint="+sprint+"&important="+important+"&responsable="+responsable+"&title="+title+"&description="+description+"&estimate="+estimate;
+		var params = "type=newTask&sprint="+sprint+"&important="+important+"&responsable="+responsable+"&title="+title+"&description="+description+"&estimate="+estimate+"&taskId="+taskid;
 		http.open("POST",url,true);
 	
 		//Send the proper header information along with the request
@@ -204,7 +205,7 @@
 				if(http.responseText!=""){
 					alert(http.responseText);
 				}else{
-					alert("Tarefa criada com sucesso");
+					alert("Tarefa salva com sucesso");
 					dataRequest('tabs-2');
 				}
 				

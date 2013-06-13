@@ -43,7 +43,7 @@
 	.buble-content {
                 width: 100%;
                 top: 0;
-                margin: 8 0 0 5;
+                margin: 8px 0 0 5px;
                 padding: 0px 8px 0px 0px;
                 text-align:justify;
                 overflow: hidden;
@@ -60,3 +60,4 @@
                 width:93%;
         }
 	
+.connectedSortable {padding-bottom: 150px}
